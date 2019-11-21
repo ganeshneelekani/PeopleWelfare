@@ -23,9 +23,6 @@ public class PersonDetail {
     @Column(name = "PERSON_GENDER")
     private String gender;
 
-    @Column(name = "PERSON_BDATE")
-    private Date personBDate;
-
     @Column(name = "PERSON_ADDRESS")
     private String personAddress;
 
@@ -52,6 +49,9 @@ public class PersonDetail {
 
     @Column(name = "PERSON_PASSWORD")
     private String password;
+
+    @Column(name = "PARENT_REFERENCE")
+    private String parentReference;
 
     public String getPersonId() {
         return personId;
@@ -83,14 +83,6 @@ public class PersonDetail {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public Date getPersonBDate() {
-        return personBDate;
-    }
-
-    public void setPersonBDate(Date personBDate) {
-        this.personBDate = personBDate;
     }
 
     public String getPersonAddress() {
@@ -163,5 +155,13 @@ public class PersonDetail {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getParentReference() {
+        return parentReference;
+    }
+
+    public void setParentReference(String parentReference) {
+        this.parentReference = parentReference;
     }
 }

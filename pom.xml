@@ -17,10 +17,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <spring.version>4.2.1.RELEASE</spring.version>
-    <security.version>4.0.3.RELEASE</security.version>
+    <spring.version>5.2.1.RELEASE</spring.version>
+    <security.version>5.2.0.RELEASE</security.version>
     <jdk.version>1.8</jdk.version>
-    <hibernate.version>4.3.5.Final</hibernate.version>
+    <hibernate.version>5.2.11.Final</hibernate.version>
     <org.aspectj-version>1.7.4</org.aspectj-version>
   </properties>
   <dependencies>
@@ -118,7 +118,20 @@
     <artifactId>jstl</artifactId>
     <version>1.2</version>
   </dependency>
-</dependencies>
+
+    <!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+    <dependency>
+      <groupId>commons-configuration</groupId>
+      <artifactId>commons-configuration</artifactId>
+      <version>1.10</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.10</version>
+    </dependency>
+
+  </dependencies>
   <build>
     <finalName>PeopleWelfare</finalName>
 

@@ -27,30 +27,23 @@ public class LoginDaoImpl implements LoginDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-
     @Override
-    public Login validateUser(Login login) {
+    public Login validateUser(Login validateLogin) {
 
-        LOGGER.info(" =====  INSIDE LoginDaoImpl ");
+        LOGGER.info(" =====  INSIDE LoginDaoImpl " + validateLogin.getPersonId() + " " + validateLogin.getPersonPassword());
 
-        Login validatedLogin=new Login();
-        Query q = sessionFactory.getCurrentSession().createQuery(" select p.personId,p.password from PersonDetail p");
-        List<Object[]> personDetails= (List<Object[]>)q.list();
-
-        LOGGER.info(personDetails.size() +"======");
-        for(Object[] personDetail: personDetails){
-            String id = (String) personDetail[0];
-            String password = (String)personDetail[1];
+        Login validatedLogin = new Login();
+        Query query = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p.personId =:personId  and p.password=:personPassword");
+        query.setParameter("personId", validateLogin.getPersonId());
+        query.setParameter("personPassword", validateLogin.getPersonPassword());
 
 
-            validatedLogin.setUsername(id);
-            validatedLogin.setPassword(password);
+        if(query.list().size()> 0){
+
+            return validateLogin;
         }
-
-        LOGGER.info(login.getUsername());
-        LOGGER.info(login.getPassword());
-       return  validatedLogin;
+        else{
+            return  null;
+        }
     }
-
-
 }

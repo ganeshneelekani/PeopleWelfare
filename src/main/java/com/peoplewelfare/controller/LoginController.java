@@ -41,21 +41,29 @@ public class LoginController {
 
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     public ModelAndView validateLogin(HttpServletRequest request, HttpServletResponse response,
-            @ModelAttribute("login") Login user) {
+                                      @ModelAttribute("login") Login user) {
 
 
-        LOGGER.info(user.getUsername()+"===============3==================="+user.getPassword());
-        Login validatedLogin=loginService.validateUser(user);
-        LOGGER.info(validatedLogin.getUsername() +" =======ID====1");
-        LOGGER.info(validatedLogin.getPassword()+" ===============PASSWORD===2");
-        return new ModelAndView("login");
+        LOGGER.info(user.getPersonId() + "===============3===================" + user.getPersonPassword());
+        Login validatedLogin = loginService.validateUser(user);
+
+        LOGGER.info(validatedLogin + " OOOOOOO");
+
+        if (validatedLogin == null) {
+
+            ModelAndView model = new ModelAndView("login");
+            model.addObject("msg", "Person Id and Password is not match");
+            return model;
+        } else {
+            return new ModelAndView("login");
+        }
+
     }
 
     @RequestMapping(value = "/loginUser", method = RequestMethod.GET)
     public ModelAndView addUserGetRequest(HttpServletRequest request, HttpServletResponse response,
-            @ModelAttribute("login") Login user) {
+                                          @ModelAttribute("login") Login user) {
         LOGGER.info("================4====================");
-
 
         ModelAndView mav = new ModelAndView("login");
         mav.addObject("login", new Login());

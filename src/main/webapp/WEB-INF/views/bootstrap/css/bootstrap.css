@@ -2761,10 +2761,20 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .forgot-password {
     color: rgb(104, 145, 162);
-    font-size: initial;
+    font-size: 0.90rem;
     font-family: initial;
 }
 
+.register-user {
+    color: rgb(104, 145, 162);
+    font-size: 1.20rem;
+    font-family: initial;
+}
+.error {
+    color: rgb(255, 0, 0);
+    font-size: initial;
+    font-family: initial;
+}
 .forgot-password:hover,
 .forgot-password:active,
 .forgot-password:focus{

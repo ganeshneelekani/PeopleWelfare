@@ -41,7 +41,8 @@ CREATE TABLE PERSON_DETAILS
 );
 
 
-insert into PERSON_DETAILS values ('karti25','Karthik','Neelekani','2015-12-17','Male','KARNATAKA','INDIA','ADDRESS1','Manjunath@gmail.com','560100','6767676767','Manjunath','Father',"hello")
+insert into PERSON_DETAILS values ('karti25','Karthik','Neelekani','Male','KARNATAKA','INDIA','ADDRESS1',
+'kartik@gmail.com','560100','6767676767','Manjunath','Father',"hello","PP00001")
 
 insert into PERSON_DETAILS values ('ave01Rahul0126','Rahul','Male','2015-12-17','8','C section','teac01','Banalore','Manjunath','Manjunath@gmail.com','6767676767')
 
