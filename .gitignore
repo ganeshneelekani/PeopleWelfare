@@ -1,0 +1,42 @@
+# Mac files
+.DS_Store
+
+# Eclipse files
+.buildpath
+
+# Maven project files
+.classpath
+.project
+.settings
+
+# Ruby files
+.bundle
+bundle
+
+# IntelliJ project files
+*.iml
+*.ipr
+*.iws
+.idea
+.idea/*
+
+bin
+target
+derby.log
+
+.clover
+.fbprefs
+*.orig
+
+release.properties
+dependency-reduced-pom.xml
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+*.log
+*.log.gz
+*.bak
+
+crawler-domains-validator/src/site/apt/domain-diff.apt
+
+# ?????
+/1
