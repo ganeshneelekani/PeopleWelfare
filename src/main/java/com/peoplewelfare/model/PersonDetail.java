@@ -1,10 +1,6 @@
 package com.peoplewelfare.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "PERSON_DETAILS")
@@ -36,7 +32,7 @@ public class PersonDetail {
     private String country;
 
     @Column(name = "PINCODE")
-    private String personReferred;
+    private String pinCode;
 
     @Column(name = "CONTACT_NUMBER")
     private String contactNumber;
@@ -52,6 +48,9 @@ public class PersonDetail {
 
     @Column(name = "PARENT_REFERENCE")
     private String parentReference;
+
+    @Transient
+    private String verifyPassword;
 
     public String getPersonId() {
         return personId;
@@ -117,12 +116,12 @@ public class PersonDetail {
         this.country = country;
     }
 
-    public String getPersonReferred() {
-        return personReferred;
+    public String getPinCode() {
+        return pinCode;
     }
 
-    public void setPersonReferred(String personReferred) {
-        this.personReferred = personReferred;
+    public void setPinCode(String pinCode) {
+        this.pinCode = pinCode;
     }
 
     public String getContactNumber() {
@@ -163,5 +162,13 @@ public class PersonDetail {
 
     public void setParentReference(String parentReference) {
         this.parentReference = parentReference;
+    }
+
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+
+    public void setVerifyPassword(String verifyPassword) {
+        this.verifyPassword = verifyPassword;
     }
 }

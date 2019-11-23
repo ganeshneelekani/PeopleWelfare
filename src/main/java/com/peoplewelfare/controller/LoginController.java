@@ -55,7 +55,8 @@ public class LoginController {
             model.addObject("msg", "Person Id and Password is not match");
             return model;
         } else {
-            return new ModelAndView("login");
+            ModelAndView mav = new ModelAndView("mainMenu");
+            return mav;
         }
 
     }

@@ -71,6 +71,11 @@
          </br>
          </br>
          </br>
+
+         <div>
+         <span class="container-fluid">
+         <h2>${loginCredential}</h2></span>
+         </div>
          <div class="row">
             <div class="col-sm-4">
             </div>
@@ -78,9 +83,11 @@
             </div>
             <div class="col-sm-4">
                <div class="card card-container">
-                  <form:form id="loginForm" modelAttribute="login" action="/PeopleWelfare/loginUser" method="post" class="form-signin" >
+                  <form:form id="loginForm" modelAttribute="login" action="/PeopleWelfare/loginUser" method="post"
+                  class="form-signin" >
                      <table align="center">
                         <span class="error">${msg}</span>
+
                         <tr>
                            <td>
                               <form:input path="personId" name="personId" id="personId" placeholder="Person Id" class="form-control"  />
@@ -102,7 +109,7 @@
                               Forgot the password?
                               </a>
                            </br>
-                               <a href="#" class="register-user">
+                               <a class="register-user" href="/PeopleWelfare/RegisterPerson">
                                 Register Person
                                </a>
                             </td>

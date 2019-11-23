@@ -49,6 +49,7 @@
         <beans:property name="annotatedClasses">
             <beans:list>
                 <beans:value>com.peoplewelfare.model.PersonDetail</beans:value>
+                <beans:value>com.peoplewelfare.model.Login</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">

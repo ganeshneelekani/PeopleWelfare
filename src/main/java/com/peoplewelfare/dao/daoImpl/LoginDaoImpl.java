@@ -3,17 +3,11 @@ package com.peoplewelfare.dao.daoImpl;
 import com.peoplewelfare.dao.LoginDao;
 import com.peoplewelfare.model.Login;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
-import javax.swing.*;
-import java.util.List;
 
 /**
  * Created by gn033604 on 9/2/17.
@@ -32,7 +26,6 @@ public class LoginDaoImpl implements LoginDao {
 
         LOGGER.info(" =====  INSIDE LoginDaoImpl " + validateLogin.getPersonId() + " " + validateLogin.getPersonPassword());
 
-        Login validatedLogin = new Login();
         Query query = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p.personId =:personId  and p.password=:personPassword");
         query.setParameter("personId", validateLogin.getPersonId());
         query.setParameter("personPassword", validateLogin.getPersonPassword());
