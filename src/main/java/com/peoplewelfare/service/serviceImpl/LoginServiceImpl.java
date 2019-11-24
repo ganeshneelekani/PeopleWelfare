@@ -3,6 +3,7 @@ package com.peoplewelfare.service.serviceImpl;
 
 import com.peoplewelfare.dao.LoginDao;
 import com.peoplewelfare.model.Login;
+import com.peoplewelfare.model.PersonDetail;
 import com.peoplewelfare.service.LoginService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,11 @@ public class LoginServiceImpl implements LoginService {
     LoginDao loginDao;
 
     @Override
-    public Login validateUser(Login login) {
+    public PersonDetail validateUser(Login login) {
 
         LOGGER.info(" ========== INSIDE LoginServiceImpl ");
-        Login validatedLogin =loginDao.validateUser(login);
+        PersonDetail validatedLogin =loginDao.validateUser(login);
         return  validatedLogin;
     }
-
 
 }

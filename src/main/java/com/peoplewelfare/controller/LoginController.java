@@ -1,6 +1,7 @@
 package com.peoplewelfare.controller;
 
 import com.peoplewelfare.model.Login;
+import com.peoplewelfare.model.PersonDetail;
 import com.peoplewelfare.service.LoginService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class LoginController {
 
 
         LOGGER.info(user.getPersonId() + "===============3===================" + user.getPersonPassword());
-        Login validatedLogin = loginService.validateUser(user);
+        PersonDetail validatedLogin = loginService.validateUser(user);
 
         LOGGER.info(validatedLogin + " OOOOOOO");
 
@@ -53,10 +54,13 @@ public class LoginController {
 
             ModelAndView model = new ModelAndView("login");
             model.addObject("msg", "Person Id and Password is not match");
+            model.addObject("login", new Login());
             return model;
         } else {
             ModelAndView mav = new ModelAndView("mainMenu");
-            return mav;
+
+            LOGGER.info("==================4===================="+validatedLogin.getPersonId());
+            return mav.addObject("personDetail",validatedLogin);
         }
 
     }
