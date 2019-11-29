@@ -99,7 +99,7 @@
                                           </a>
                                        </li>
                                        <li>
-                                          <a href="#">Member Tree</a>
+                                          <a href="/PeopleWelfare/MemberTree/${personDetail.personId}">Member Tree</a>
                                        </li>
                                        <li>
                                           <a href="#">Team Level</a>
