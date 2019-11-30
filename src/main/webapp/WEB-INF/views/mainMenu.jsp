@@ -3,440 +3,119 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description"
-         content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
-      <title>Sidebar template</title>
-      <!-- using online links -->
-      <link rel="stylesheet" href="bootstrap/js/mainMenuJs/bootstrap.min.css"
-         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-      <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-      <link rel="stylesheet" href="bootstrap/js/mainMenuJs/jquery.mCustomScrollbar.min.css">
-      <!-- using local links -->
-      <link rel="stylesheet" href="bootstrap/js/mainMenuJs/bootstrap.css">a-shopping
-      <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+      <title>Bootstrap Navbar Sidebar - Fixed to Left or Right</title>
+      <link rel="stylesheet" href="bootstrap/mainmenu/ajax.bootstrap.min.css" />
+      <link href='bootstrap/mainmenu/bootstrap.min.css'
+         rel='stylesheet' type='text/css'>
+      <!-- Google Fonts -->
+     <link rel="stylesheet" href='bootstrap/mainmenu/font-awesome.min.css"/>
+      <link href='bootstrap/mainmenu/navbar-fixed-left.min.css'
+         rel='stylesheet' type='text/css'>
+      <link href='bootstrap/mainmenu/navbar-fixed-right.min.css'
+         rel='stylesheet' type='text/css'>
+      <link href='bootstrap/mainmenu/docs.css'
+         rel='stylesheet' type='text/css'>
+      <script type="text/javascript" src="bootstrap/mainmenu/jquery.min.js"></script>
+      <script type="text/javascript" src="bootstrap/mainmenu/twitter.bootstrap.min.js"></script>
+      <script type="text/javascript" src="bootstrap/mainmenu/docs.js"></script> 
+      <script async defer type="text/javascript" src="bootstrap/mainmenu/button.js"></script> 
    </head>
    <body>
-      <script type="text/javascript" src="bootstrap/js/jquery.validation.js"></script> 
-      <script type="text/JavaScript" src="bootstrap/js/mainMenuJs/jquery.min.js"></script>
-      <script type="text/JavaScript" src="bootstrap/js/mainMenuJs/sidebarToggle.js"></script>
-      <script type="text/JavaScript" src="bootstrap/js/mainMenuJs/popper.min.js"
-         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-      <script  type="text/JavaScript" src="bootstrap/js/mainMenuJs/bootstrap.min.js"
-         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-      <script type="text/JavaScript" src="bootstrap/js/mainMenuJs/concat.min.js"></script>
-      <nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-primary">
-         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-         <a class="navbar-brand" href="#">BS 4 <strong>My Resume</strong></a>
-         <div class="collapse navbar-collapse" id="navbarResponsive" name="navbarResponsive">
-            <ul class="navbar-nav mr-auto">
-               <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
-                  <nav id="sidebar" class="sidebar-wrapper">
-                     <div class="sidebar-content">
-                        <!-- sidebar-brand  -->
-                        <div class="sidebar-item sidebar-brand">
-                           <a href="#">pro sidebar</a>
-                        </div>
-                        <!-- sidebar-header  -->
-                        <div class="sidebar-item sidebar-header d-flex flex-nowrap">
-                           <div class="user-pic">
-                              <img class="img-responsive img-rounded" src="bootstrap/images/user.png" alt="User
-                              picture">
-                           </div>
-                           <div class="user-info">
-                              <span class="user-name"><strong>${personDetail.personFirstName}</strong>
-                              </span>
-
-                              <span class="user-status">
-                              <i class="fa fa-circle"></i>
-                              <span>Online</span>
-                              </span>
-                           </div>
-                        </div>
-                        <!-- sidebar-menu  -->
-                        <div class=" sidebar-item sidebar-menu">
-                           <ul>
-                              <li class="header-menu">
-                                 <span>General</span>
-                              </li>
-                              <li class="sidebar-dropdown">
-                                 <a href="#">
-                                 <i class="fa fa-user"></i>
-                                 <span class="menu-text">My Profile</span>
-                                 </a>
-                                 </a>
-                                 <div class="sidebar-submenu">
-                                    <ul>
-                                       <li>
-                                          <a href="#">Update Profile
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Change Password</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Dashboard 3</a>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <li class="sidebar-dropdown">
-                                 <a href="#">
-                                 <i class="fa fa-users"></i>
-                                 <span class="menu-text">Team details</span>
-                                 </a>
-                                 <div class="sidebar-submenu">
-                                    <ul>
-                                       <li>
-                                          <a href="#">Direct List
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a href="/PeopleWelfare/MemberTree/${personDetail.personId}">Member Tree</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Team Level</a>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <li class="sidebar-dropdown">
-                                 <a href="#">
-                                 <i class="far fa-gem"></i>
-                                 <span class="menu-text">Components</span>
-                                 </a>
-                                 <div class="sidebar-submenu">
-                                    <ul>
-                                       <li>
-                                          <a href="#">General</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Panels</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Tables</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Icons</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Forms</a>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <li class="sidebar-dropdown">
-                                 <a href="#">
-                                 <i class="fa fa-chart-line"></i>
-                                 <span class="menu-text">Charts</span>
-                                 </a>
-                                 <div class="sidebar-submenu">
-                                    <ul>
-                                       <li>
-                                          <a href="#">Pie chart</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Line chart</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Bar chart</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Histogram</a>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <li class="sidebar-dropdown">
-                                 <a href="#">
-                                 <i class="fa fa-globe"></i>
-                                 <span class="menu-text">Maps</span>
-                                 </a>
-                                 <div class="sidebar-submenu">
-                                    <ul>
-                                       <li>
-                                          <a href="#">Google maps</a>
-                                       </li>
-                                       <li>
-                                          <a href="#">Open street map</a>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <li class="header-menu">
-                                 <span>Extra</span>
-                              </li>
-                              <li>
-                                 <a href="#">
-                                 <i class="fa fa-book"></i>
-                                 <span class="menu-text">Documentation</span>
-                                 <span class="badge badge-pill badge-primary">Beta</span>
-                                 </a>
-                              </li>
-                              <li>
-                                 <a href="#">
-                                 <i class="fa fa-calendar"></i>
-                                 <span class="menu-text">Calendar</span>
-                                 </a>
-                              </li>
-                              <li>
-                                 <a href="#">
-                                 <i class="fa fa-folder"></i>
-                                 <span class="menu-text">Examples</span>
-                                 </a>
-                              </li>
-                           </ul>
-                        </div>
-                        <!-- sidebar-menu  -->
-                     </div>
-                     <!-- sidebar-footer  -->
-                     <div class="sidebar-footer">
-                        <div class="dropdown">
-                           <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <i class="fa fa-bell"></i>
-                           <span class="badge badge-pill badge-warning notification">3</span>
-                           </a>
-                           <div class="dropdown-menu notifications" aria-labelledby="dropdownMenuMessage">
-                              <div class="notifications-header">
-                                 <i class="fa fa-bell"></i>
-                                 Notifications
-                              </div>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">
-                                 <div class="notification-content">
-                                    <div class="icon">
-                                       <i class="fas fa-check text-success border border-success"></i>
-                                    </div>
-                                    <div class="content">
-                                       <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                          elit. In totam explicabo
-                                       </div>
-                                       <div class="notification-time">
-                                          6 minutes ago
-                                       </div>
-                                    </div>
-                                 </div>
-                              </a>
-                              <a class="dropdown-item" href="#">
-                                 <div class="notification-content">
-                                    <div class="icon">
-                                       <i class="fas fa-exclamation text-info border border-info"></i>
-                                    </div>
-                                    <div class="content">
-                                       <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                          elit. In totam explicabo
-                                       </div>
-                                       <div class="notification-time">
-                                          Today
-                                       </div>
-                                    </div>
-                                 </div>
-                              </a>
-                              <a class="dropdown-item" href="#">
-                                 <div class="notification-content">
-                                    <div class="icon">
-                                       <i class="fas fa-exclamation-triangle text-warning border border-warning"></i>
-                                    </div>
-                                    <div class="content">
-                                       <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                          elit. In totam explicabo
-                                       </div>
-                                       <div class="notification-time">
-                                          Yesterday
-                                       </div>
-                                    </div>
-                                 </div>
-                              </a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-center" href="#">View all notifications</a>
-                           </div>
-                        </div>
-                        <div class="dropdown">
-                           <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <i class="fa fa-envelope"></i>
-                           <span class="badge badge-pill badge-success notification">7</span>
-                           </a>
-                           <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
-                              <div class="messages-header">
-                                 <i class="fa fa-envelope"></i>
-                                 Messages
-                              </div>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">
-                                 <div class="message-content">
-                                    <div class="pic">
-                                       <img src="img/user.jpg" alt="">
-                                    </div>
-                                    <div class="content">
-                                       <div class="message-title">
-                                          <strong> Jhon doe</strong>
-                                       </div>
-                                       <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                          elit. In totam explicabo
-                                       </div>
-                                    </div>
-                                 </div>
-                              </a>
-                              <a class="dropdown-item" href="#">
-                                 <div class="message-content">
-                                    <div class="pic">
-                                       <img src="img/user.jpg" alt="">
-                                    </div>
-                                    <div class="content">
-                                       <div class="message-title">
-                                          <strong> Jhon doe</strong>
-                                       </div>
-                                       <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                          elit. In totam explicabo
-                                       </div>
-                                    </div>
-                                 </div>
-                              </a>
-                              <a class="dropdown-item" href="#">
-                                 <div class="message-content">
-                                    <div class="pic">
-                                       <img src="img/user.jpg" alt="">
-                                    </div>
-                                    <div class="content">
-                                       <div class="message-title">
-                                          <strong> Jhon doe</strong>
-                                       </div>
-                                       <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
-                                          elit. In totam explicabo
-                                       </div>
-                                    </div>
-                                 </div>
-                              </a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-center" href="#">View all messages</a>
-                           </div>
-                        </div>
-                        <div class="dropdown">
-                           <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <i class="fa fa-cog"></i>
-                           <span class="badge-sonar"></span>
-                           </a>
-                           <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
-                              <a class="dropdown-item" href="#">My profile</a>
-                              <a class="dropdown-item" href="#">Help</a>
-                              <a class="dropdown-item" href="#">Setting</a>
-                           </div>
-                        </div>
-                        <div>
-                           <a href="#">
-                           <i class="fa fa-power-off"></i>
-                           </a>
-                        </div>
-                        <div class="pinned-footer">
-                           <a href="#">
-                           <i class="fas fa-ellipsis-h"></i>
-                           </a>
-                        </div>
-                     </div>
-                  </nav>
-            </ul>
+      <nav class="navbar navbar-inverse navbar-fixed-left">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                     </ul>
+                  </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <li>
+                     <a data-class="navbar-fixed-left">
+                     <i class="fa fa-arrow-left"></i>
+                     Fixed Left
+                     </a>
+                  </li>
+                  <li>
+                     <a data-class="navbar-fixed-top">
+                     <i class="fa fa-arrow-up"></i>
+                     Fixed Top
+                     <small>(original)</small>
+                     </a>
+                  </li>
+                  <li>
+                     <a data-class="navbar-fixed-right">
+                     <i class="fa fa-arrow-right"></i>
+                     Fixed Right
+                     </a>
+                  </li>
+               </ul>
+            </div>
          </div>
       </nav>
-      <!-- page-content  -->
-      <main class="page-content pt-2">
-      <div id="overlay" class="overlay"></div>
-      <div class="container-fluid p-5">
-      <div class="row">
-      <div class="form-group col-md-12">
-      <h2>Pro Sidebar</h2>
-      <p>This is a responsive sidebar template with dropdown menu based on bootstrap framework.</p>
-      </div>
-      <div class="form-group col-md-12">
-      <iframe
-         src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=star&count=true&size=small"
-         frameborder="0" scrolling="0" width="100px" height="30px"></iframe>
-      <iframe
-         src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=fork&count=true&size=small"
-         frameborder="0" scrolling="0" width="100px" height="30px"></iframe>
-      </div>
-      <div class="form-group col-md-12">
-      <a id="toggle-sidebar" class="btn btn-secondary rounded-0" href="#">
-      <span>Toggle Sidebar</span>
-      </a>
-      <a id="pin-sidebar" class="btn btn-outline-secondary rounded-0" href="#">
-      <span>Pin Sidebar</span>
-      </a>
-      </div>
-      </div>
-      <hr>
-      <div class="row">
-      <div class="form-group col-md-12">
-      <h3>Themes</h3>
-      <p>Here are more themes that you can use</p>
-      </div>
-      </div>
-      <div class="row">
-      <div class="form-group col-md-12">
-      <a href="#" data-theme="default-theme" class="theme default-theme selected"></a>
-      <a href="#" data-theme="chiller-theme" class="theme chiller-theme"></a>
-      <a href="#" data-theme="legacy-theme" class="theme legacy-theme"></a>
-      <a href="#" data-theme="ice-theme" class="theme ice-theme"></a>
-      <a href="#" data-theme="cool-theme" class="theme cool-theme"></a>
-      <a href="#" data-theme="light-theme" class="theme light-theme"></a>
-      </div>
-      <div class="form-group col-md-12">
-      <p>You can also use background image </p>
-      </div>
-      <div class="form-group col-md-12">
-      <a href="#" data-bg="bg1" class="theme theme-bg selected"></a>
-      <a href="#" data-bg="bg2" class="theme theme-bg"></a>
-      <a href="#" data-bg="bg3" class="theme theme-bg"></a>
-      <a href="#" data-bg="bg4" class="theme theme-bg"></a>
-      </div>
-      <div class="form-group col-md-12">
-      <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="toggle-bg" checked>
-      <label class="custom-control-label" for="toggle-bg">Background image</label>
-      </div>
-      </div>
-      <div class="form-group col-md-12">
-      <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="toggle-border-radius">
-      <label class="custom-control-label" for="toggle-border-radius">Border radius</label>
-      </div>
-      </div>
-      </div>
-      <hr>
-      <div class="row ">
-      <div class="form-group col-md-12">
-      <small>Made with <i class="fa fa-heart text-danger" aria-hidden="true"></i> by <span
-         class="text-secondary font-weight-bold">Mohamed
-      Azouaoui</span></small>
-      </div>
-      <div class="form-group col-md-12">
-      <a href="https://github.com/azouaoui-med" target="_blank"
-         class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3">
-      <i class="fab fa-github" aria-hidden="true"></i>
-      </a>
-      <a href="https://twitter.com/azouaoui_med" target="_blank"
-         class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3">
-      <i class="fab fa-twitter" aria-hidden="true"></i>
-      </a>
-      <a href="https://www.instagram.com/azouaoui_med/" target="_blank"
-         class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3">
-      <i class="fab fa-instagram" aria-hidden="true"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/mohamed-azouaoui/" target="_blank"
-         class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3">
-      <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-      </a>
-      </div>
-      </div>
-      </div>
-      </main>
-      <!-- page-content" -->
+      <div class="container">
+         <div class="jumbotron">
+            <h1>
+               Bootstrap Navbar Sidebar
+               <br>
+               <small>Fixed to Left or Right</small>
+            </h1>
+            <p>
+               <strong>
+               Use classic Bootstrap navbar as sidebar, on left or right side.
+               </strong>
+            </p>
+            <p>
+               <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar" data-icon="octicon-star" data-style="mega" data-count-href="/mladenplavsic/bootstrap-navbar-sidebar/stargazers" data-count-api="/repos/mladenplavsic/bootstrap-navbar-sidebar#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mladenplavsic/bootstrap-navbar-sidebar on GitHub">Star</a>
+               <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/mladenplavsic/bootstrap-navbar-sidebar/network" aria-label="Fork mladenplavsic/bootstrap-navbar-sidebar on GitHub">Fork</a>
+               <a class="github-button" href="https://github.com/mladenplavsic" data-style="mega" aria-label="Follow @mladenplavsic on GitHub">Follow @mladenplavsic</a>
+            </p>
+            <p>Same when using <code>.navbar-fixed-top</code> - add class <code>.navbar-fixed-left</code> or <code>.navbar-fixed-right</code> where needed.</p>
+            <p>Click buttons below, and appropriate class will be added to example navbar.</p>
+            <p>
+               <span class="btn-group">
+               <a data-class="navbar-fixed-left" class="btn btn-lg btn-default">
+               <i class="fa fa-arrow-left"></i>
+               Fixed Left
+               </a>
+               <a data-class="navbar-fixed-top" class="btn btn-lg btn-default">
+               <i class="fa fa-arrow-up"></i>
+               Fixed Top
+               <small>(original)</small>
+               </a>
+               <a data-class="navbar-fixed-right" class="btn btn-lg btn-default">
+               <i class="fa fa-arrow-right"></i>
+               Fixed Right
+               </a>
+               </span>
+            </p>
+         </div>
+         <footer>
+            Repository maintained by <a href="https://github.com/mladenplavsic">mladenplavsic</a>
+         </footer>
       </div>
    </body>
 </html>
