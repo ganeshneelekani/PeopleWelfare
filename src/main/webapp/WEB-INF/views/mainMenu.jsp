@@ -21,6 +21,15 @@
       <script type="text/javascript" src="bootstrap/mainmenu/twitter.bootstrap.min.js"></script>
       <script type="text/javascript" src="bootstrap/mainmenu/docs.js"></script> 
       <script async defer type="text/javascript" src="bootstrap/mainmenu/button.js"></script> 
+
+      <title>Sidebar template</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+          <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+          <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+          <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    </head>
    <body>
       <nav class="navbar navbar-inverse navbar-fixed-left">
@@ -34,15 +43,31 @@
                </button>
                <a class="navbar-brand" href="#">Project name</a>
             </div>
+            <div class="sidebar-header">
+                    <div class="user-pic">
+                      <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+                        alt="User picture">
+                    </div>
+                    <div class="user-info">
+                      <span class="user-name">Jhon
+                        <strong>Smith</strong>
+                      </span>
+                      <span class="user-role">Administrator</span>
+                      <span class="user-status">
+                        <i class="fa fa-circle"></i>
+                        <span>Online</span>
+                      </span>
+                    </div>
             <div id="navbar" class="navbar-collapse collapse">
                <ul class="nav navbar-nav">
                   <li><a href="#">Home</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Contact</a></li>
                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                     aria-expanded="false">Team Details<span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
+                        <li><a href="MemberTree/${personDetail.personId}">MemberTree</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
