@@ -44,7 +44,7 @@ public class MainMenuDaoImpl implements MainMenuDao {
                 personDetails) {
 
             LOGGER.info("=======2.1=====" + personDetail.getPersonId());
-            listPersonDetails = fetchRecursiveChild(personDetail.getPersonId(),4);
+            listPersonDetails = fetchRecursiveChild(personDetail.getPersonId(),3);
 
         }
 
