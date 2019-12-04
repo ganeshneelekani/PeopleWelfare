@@ -40,6 +40,11 @@ public class LoginController {
         return mav;
     }
 
+    @RequestMapping(value = "/homePage", method = RequestMethod.GET)
+    public String finalPage() {
+        return "final";
+    }
+
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     public ModelAndView validateLogin(HttpServletRequest request, HttpServletResponse response,
                                       @ModelAttribute("login") Login user) {
