@@ -2,6 +2,7 @@ package com.peoplewelfare.controller;
 
 import com.peoplewelfare.model.Login;
 import com.peoplewelfare.model.PersonDetail;
+import com.peoplewelfare.service.LoginService;
 import com.peoplewelfare.service.MainMenuService;
 import com.peoplewelfare.utility.PersonDetailComparator;
 import org.apache.log4j.Logger;
@@ -26,12 +27,14 @@ public class MainMenuController {
     @Autowired
     MainMenuService mainMenuService;
 
+
     @RequestMapping(value = "/MemberTree/{id}", method = RequestMethod.GET)
     public ModelAndView validateLogin(@PathVariable("id") String personId,HttpServletRequest request,
                                       HttpServletResponse response,
                                       @ModelAttribute("login") Login user) {
 
 
+        PersonDetail fetchPersonDetail=mainMenuService.fetchPersonInfo(personId);
 
         LOGGER.info("===========================1 Member Tree======================="+personId);
 
@@ -59,6 +62,7 @@ public class MainMenuController {
 
         ModelAndView model = new ModelAndView("mainMenuMemberTree");
         model.addObject("nodes", nodes);
+        model.addObject("personDetail", fetchPersonDetail);
         return model;
     }
 }

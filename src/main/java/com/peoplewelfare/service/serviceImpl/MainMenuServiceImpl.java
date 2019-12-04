@@ -20,4 +20,9 @@ public class MainMenuServiceImpl implements MainMenuService {
         List<PersonDetail> personDetails=mainMenuDao.fetchMemberTreeInfo(personId);
         return  personDetails;
     }
+
+    @Override
+    public PersonDetail fetchPersonInfo(String personId) {
+        return mainMenuDao.fetchPersonInfo(personId);
+    }
 }

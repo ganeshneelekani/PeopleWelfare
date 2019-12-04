@@ -7,4 +7,7 @@ import java.util.List;
 public interface MainMenuDao {
 
     public List<PersonDetail> fetchMemberTreeInfo(String personId);
+
+    public PersonDetail fetchPersonInfo(String personId);
+
 }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface MainMenuService {
 
     public List<PersonDetail> fetchMemberTreeInfo(String personId);
+
+    public PersonDetail fetchPersonInfo(String personId);
 }

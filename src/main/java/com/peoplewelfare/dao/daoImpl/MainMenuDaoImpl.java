@@ -58,6 +58,15 @@ public class MainMenuDaoImpl implements MainMenuDao {
         return personDetails;
     }
 
+    @Override
+    public PersonDetail fetchPersonInfo(String personId) {
+        Query query = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p.personId =:personId");
+        query.setParameter("personId", personId);
+
+        PersonDetail personDetails = (PersonDetail)query.getSingleResult();
+        return  personDetails;
+    }
+
 
     private List<PersonDetail> fetchRecursiveChild(String personId,int n) {
 

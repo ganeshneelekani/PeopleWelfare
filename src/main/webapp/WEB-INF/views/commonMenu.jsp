@@ -41,7 +41,6 @@
                <strong><span class="user-name">${personDetail.personFirstName}</strong>
                <strong><span class="user-name">${personDetail.personLastName}</strong>
                </span>
-               <span class="user-role">Administrator</span>
                <span class="user-status">
                <i class="fa fa-circle"></i>
                <span>Online</span>
@@ -68,10 +67,10 @@
                   <span>General</span>
                </li>
                <li>
-                  <a href="/">
+                  <a href="/PeopleWelfare/home">
                   <i class="fa fa-home"></i>
                   <span>Home</span>
-                  <span class="badge badge-pill badge-primary">Beta</span>
+
                   </a>
                </li>
                <li class="sidebar-dropdown">
