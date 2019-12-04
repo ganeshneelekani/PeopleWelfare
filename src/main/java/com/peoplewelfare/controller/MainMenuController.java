@@ -57,7 +57,7 @@ public class MainMenuController {
         LOGGER.info(nodes);
 
 
-        ModelAndView model = new ModelAndView("teamMember");
+        ModelAndView model = new ModelAndView("mainMenuMemberTree");
         model.addObject("nodes", nodes);
         return model;
     }
