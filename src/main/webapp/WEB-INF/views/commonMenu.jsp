@@ -78,7 +78,7 @@
                            </a>
                         </li>
                         <li>
-                           <a href="#">Update Profile</a>
+                           <a href="/PeopleWelfare/updateProfile">Update Profile</a>
                         </li>
                         <li>
                            <a href="#">

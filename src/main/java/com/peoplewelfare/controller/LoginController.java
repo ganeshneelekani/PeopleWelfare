@@ -106,6 +106,17 @@ public class LoginController {
         return modelView;
     }
 
+    @RequestMapping(value = "/updateProfile", method = RequestMethod.GET)
+    public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response
+    ) {
+        LOGGER.info("================4 viewProfile ====================");
+        PersonDetail fetchPersonDetail=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        ModelAndView modelView = new ModelAndView("profileUpdate");
+        modelView.addObject("personRegistration", fetchPersonDetail);
+        return modelView;
+    }
+
+
     @RequestMapping(value = "/MemberTree", method = RequestMethod.GET)
     public ModelAndView getMemberTree(HttpServletRequest request, HttpServletResponse response,
                            RedirectAttributes redirectAttributes) {
