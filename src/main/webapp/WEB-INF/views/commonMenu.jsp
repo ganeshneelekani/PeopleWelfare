@@ -74,7 +74,7 @@
                   <div class="sidebar-submenu">
                      <ul>
                         <li>
-                           <a href="#">View Profile
+                           <a href="/PeopleWelfare/viewProfile">View Profile
                            </a>
                         </li>
                         <li>
