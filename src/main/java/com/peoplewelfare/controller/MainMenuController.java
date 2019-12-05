@@ -8,6 +8,7 @@ import com.peoplewelfare.utility.PersonDetailComparator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,45 +25,6 @@ public class MainMenuController {
 
     static Logger LOGGER = Logger.getLogger(MainMenuController.class);
 
-    @Autowired
-    MainMenuService mainMenuService;
 
 
-    @RequestMapping(value = "/MemberTree/{id}", method = RequestMethod.GET)
-    public ModelAndView validateLogin(@PathVariable("id") String personId,HttpServletRequest request,
-                                      HttpServletResponse response,
-                                      @ModelAttribute("login") Login user) {
-
-
-        PersonDetail fetchPersonDetail=mainMenuService.fetchPersonInfo(personId);
-
-        LOGGER.info("===========================1 Member Tree======================="+personId);
-
-
-        List<PersonDetail> detailList=mainMenuService.fetchMemberTreeInfo(personId);
-
-
-        Collections.sort(detailList, new PersonDetailComparator());
-
-        StringBuffer nodes=new StringBuffer();
-        for (PersonDetail personDetail : detailList) {
-
-            LOGGER.info("=======5.3=====" + personDetail.getPersonId() +"   "+personDetail.getParentReference());
-
-            nodes.append(" { id: "+ "\"" +personDetail.getPersonId() +"\""+", pid: "+"\""+personDetail.getParentReference()+
-                    "\" "+", tags: " +
-                    "[\"family_template_11\"], name: "+"\""+ personDetail.getPersonFirstName() +"\""+", title: "+
-                    "\""+personDetail.getPersonId()+"\""+"},").append(
-                    "\n");
-
-        }
-
-        LOGGER.info(nodes);
-
-
-        ModelAndView model = new ModelAndView("mainMenuMemberTree");
-        model.addObject("nodes", nodes);
-        model.addObject("personDetail", fetchPersonDetail);
-        return model;
-    }
 }

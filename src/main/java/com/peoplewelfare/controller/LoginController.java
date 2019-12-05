@@ -3,6 +3,8 @@ package com.peoplewelfare.controller;
 import com.peoplewelfare.model.Login;
 import com.peoplewelfare.model.PersonDetail;
 import com.peoplewelfare.service.LoginService;
+import com.peoplewelfare.service.MainMenuService;
+import com.peoplewelfare.utility.PersonDetailComparator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -23,6 +27,10 @@ public class LoginController {
 
     @Autowired
     LoginService loginService;
+
+
+    @Autowired
+    MainMenuService mainMenuService;
 
     PersonDetail validatedLogin;
 
@@ -86,5 +94,41 @@ public class LoginController {
         ModelAndView mav = new ModelAndView("login");
         mav.addObject("login", new Login());
         return mav;
+    }
+
+    @RequestMapping(value = "/MemberTree", method = RequestMethod.GET)
+    public ModelAndView getMemberTree(HttpServletRequest request, HttpServletResponse response,
+                           RedirectAttributes redirectAttributes) {
+
+        PersonDetail fetchPersonDetail=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+
+        LOGGER.info("===========================1 Member Tree======================="+validatedLogin.getPersonId());
+
+
+        List<PersonDetail> detailList=mainMenuService.fetchMemberTreeInfo(validatedLogin.getPersonId());
+
+
+        Collections.sort(detailList, new PersonDetailComparator());
+
+        StringBuffer nodes=new StringBuffer();
+        for (PersonDetail personDetail : detailList) {
+
+            LOGGER.info("=======5.3=====" + personDetail.getPersonId() +"   "+personDetail.getParentReference());
+
+            nodes.append(" { id: "+ "\"" +personDetail.getPersonId() +"\""+", pid: "+"\""+personDetail.getParentReference()+
+                    "\" "+", tags: " +
+                    "[\"family_template_11\"], name: "+"\""+ personDetail.getPersonFirstName() +"\""+", title: "+
+                    "\""+personDetail.getPersonId()+"\""+"},").append(
+                    "\n");
+
+        }
+
+        LOGGER.info(nodes);
+
+
+        ModelAndView modelView = new ModelAndView("mainMenuMemberTree");
+        modelView.addObject("nodes", nodes);
+        modelView.addObject("personDetail", fetchPersonDetail);
+        return modelView;
     }
 }

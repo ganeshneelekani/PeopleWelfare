@@ -21,7 +21,6 @@
   </nav>
   <!-- sidebar-wrapper  -->
   <main class="page-content">
-   <script src="../bootstrap/mainmenu/mainmenu.js"></script>
     <div class="container-fluid">
 
       <div id="tree"></div>
