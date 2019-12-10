@@ -2787,6 +2787,12 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     padding: 40px 40px;
 }
 
+.card-container-view-profile.card {
+    max-width: 2342px;
+    padding: 40px 40px;
+}
+
+
 .centered-form{
 	margin-top: 60px;
 }

@@ -18,7 +18,7 @@
       <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <script src="bootstrap/js/mainMenuJs/3.3.1.jquery.min.js"></script>
             <script src="bootstrap/mainmenu/mainmenu.js"></script>
-
+ <script type="text/javascript" src="bootstrap/js/common/jquery.validate.min.js"></script>
    </head>
    <body>
 

@@ -56,4 +56,17 @@ public class RegistrationDaoImpl implements RegistrationDao {
         session.close();
         return personDetail;
     }
+
+    @Override
+    public PersonDetail updatePersonDetail(PersonDetail personDetail) throws Exception {
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(personDetail);
+        if (session.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
+            session.getTransaction().commit();
+        }
+        session.close();
+        return personDetail;
+    }
 }

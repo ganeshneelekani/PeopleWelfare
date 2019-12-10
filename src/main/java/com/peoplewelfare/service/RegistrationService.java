@@ -9,4 +9,6 @@ public interface RegistrationService {
     public List<PersonDetail> validateParentReference();
 
     public PersonDetail savePersonDetail(PersonDetail personDetail) throws Exception;
+
+    public PersonDetail updatePersonDetail(PersonDetail personDetail) throws Exception;
 }

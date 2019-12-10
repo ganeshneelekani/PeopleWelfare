@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
    <head>
@@ -99,7 +99,7 @@
          <div >
             <div class="panel panel-default">
                <div class="panel-body">
-                  <form:form id="personRegistrationForm" modelAttribute="personRegistration"
+                  <form:form id="updatePersonRegistrationForm" modelAttribute="personRegistration"
                      action="/PeopleWelfare/RegisterPersonDetails" method="post" class="form-signin">
                      <span class="error">${exceptionMsg}</span>
                      <div class="form-group">
@@ -161,7 +161,6 @@
                      </div>
                      <script language="javascript">
                         populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
-                        populateCountries("country2");
                         
                      </script>
                      <div class="row">

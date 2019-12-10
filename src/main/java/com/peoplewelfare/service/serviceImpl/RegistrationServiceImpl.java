@@ -28,4 +28,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         PersonDetail detail=registrationDao.savePersonDetail(personDetail) ;
         return detail;
     }
+
+    @Override
+    public PersonDetail updatePersonDetail(PersonDetail personDetail) throws Exception {
+        PersonDetail detail=registrationDao.updatePersonDetail(personDetail) ;
+        return detail;
+    }
 }
