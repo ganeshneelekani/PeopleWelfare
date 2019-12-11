@@ -19,6 +19,11 @@
       <script src="bootstrap/js/mainMenuJs/3.3.1.jquery.min.js"></script>
             <script src="bootstrap/mainmenu/mainmenu.js"></script>
  <script type="text/javascript" src="bootstrap/js/common/jquery.validate.min.js"></script>
+ <script>
+ if ( window.history.replaceState ) {
+   window.history.replaceState( null, null, window.location.href );
+ }
+ </script>
    </head>
    <body>
 
@@ -81,7 +86,7 @@
                            <a href="/PeopleWelfare/updateProfile">Update Profile</a>
                         </li>
                         <li>
-                           <a href="#">
+                           <a href="/PeopleWelfare/ChangePassword">
                            Change Password</a>
                         </li>
                      </ul>

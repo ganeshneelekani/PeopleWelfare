@@ -11,4 +11,6 @@ public interface RegistrationService {
     public PersonDetail savePersonDetail(PersonDetail personDetail) throws Exception;
 
     public PersonDetail updatePersonDetail(PersonDetail personDetail) throws Exception;
+
+    public int updatePersonPassword(PersonDetail personDetail) throws Exception;
 }

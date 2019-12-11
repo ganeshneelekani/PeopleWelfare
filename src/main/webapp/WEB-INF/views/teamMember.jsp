@@ -25,7 +25,7 @@
 
 </head>
 <body>
-    <script src="https://balkangraph.com/js/latest/OrgChart.js"></script>
+     <script type="text/JavaScript" src="bootstrap/js/OrgChart.js"></script>
      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <div id="tree"></div>

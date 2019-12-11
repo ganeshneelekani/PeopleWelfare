@@ -69,4 +69,23 @@ public class RegistrationDaoImpl implements RegistrationDao {
         session.close();
         return personDetail;
     }
+
+    @Override
+    public int updatePersonPassword(PersonDetail personDetail) throws Exception {
+
+        LOGGER.info("===============================33333==============="+personDetail.getPassword() + "   "+personDetail.getPersonId());
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("update PersonDetail set password = :password where personId = :personId");
+        query.setParameter("password", personDetail.getPassword());
+        query.setParameter("personId", personDetail.getPersonId());
+
+        int result = query.executeUpdate();
+        if (session.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
+            session.getTransaction().commit();
+        }
+        session.close();
+        return result;
+
+    }
 }

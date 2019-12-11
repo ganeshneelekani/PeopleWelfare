@@ -30,7 +30,6 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-
     @Autowired
     MainMenuService mainMenuService;
 
@@ -121,6 +120,79 @@ public class LoginController {
         ModelAndView modelView = new ModelAndView("profileUpdate");
         modelView.addObject("personRegistration", fetchPersonDetailInfo);
         return modelView;
+    }
+
+    @RequestMapping(value = "/ChangePassword", method = RequestMethod.GET)
+    public ModelAndView UpdateChangePassword(HttpServletRequest request, HttpServletResponse response
+    ) {
+        LOGGER.info("================4 viewProfile ====================");
+        fetchPersonDetailInfo=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        ModelAndView modelView = new ModelAndView("updatePassword");
+        modelView.addObject("personRegistration", fetchPersonDetailInfo);
+        return modelView;
+    }
+
+    @RequestMapping(value = "/UpdatePassword", method = RequestMethod.GET)
+    public ModelAndView UpdatePasswordGet(HttpServletRequest request, HttpServletResponse response
+    ) {
+        LOGGER.info("================4545 viewProfile ====================");
+        fetchPersonDetailInfo=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        ModelAndView modelView = new ModelAndView("updatePassword");
+        modelView.addObject("personRegistration", fetchPersonDetailInfo);
+        return modelView;
+    }
+
+    @RequestMapping(value = "/UpdatePassword", method = RequestMethod.POST)
+    public ModelAndView postUpdatePasswordDetails(HttpServletRequest request, HttpServletResponse response,
+                                                @ModelAttribute("personRegistration") PersonDetail personDetail) {
+        ModelAndView model = new ModelAndView("updatePassword");
+
+
+        LOGGER.info(personDetail.getPersonId());
+        LOGGER.info(personDetail.getPersonFirstName());
+        LOGGER.info(personDetail.getPersonLastName());
+        LOGGER.info(personDetail.getEmailAddress());
+        LOGGER.info(personDetail.getGender());
+        LOGGER.info(personDetail.getContactNumber());
+        LOGGER.info(personDetail.getEmailAddress());
+        LOGGER.info(personDetail.getState());
+        LOGGER.info(personDetail.getCountry());
+        LOGGER.info(personDetail.getNomineeRelation());
+
+        LOGGER.info(personDetail.getParentReference());
+        LOGGER.info(personDetail.getPersonAddress());
+        LOGGER.info(personDetail.getPinCode());
+
+
+        LOGGER.info(personDetail.getPassword());
+        LOGGER.info(personDetail.getVerifyPassword());
+
+        personDetail.setPersonId(fetchPersonDetailInfo.getPersonId());
+
+        LOGGER.info("=================== update 5 password===============" + personDetail.getPassword());
+
+        if(personDetail.getPassword().isEmpty()){
+            model.addObject("personRegistration", new PersonDetail());
+            return model;
+        }
+
+
+        try {
+
+           int result= registrationService.updatePersonPassword(personDetail);
+
+           LOGGER.info("==================3 result =========" + result);
+
+            model.addObject("msg", " Password is updated");
+            model.addObject("personRegistration", new PersonDetail());
+            return model;
+
+
+        } catch (Exception e) {
+            model.addObject("exceptionMsg", "Some thing went wrong please try registering again");
+            model.addObject("personRegistration", new PersonDetail());
+            return model;
+        }
     }
 
     @RequestMapping(value = "/updatePersonRegistrationForm", method = RequestMethod.POST)

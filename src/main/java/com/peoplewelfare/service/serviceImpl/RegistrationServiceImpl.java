@@ -34,4 +34,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         PersonDetail detail=registrationDao.updatePersonDetail(personDetail) ;
         return detail;
     }
+
+    @Override
+    public int updatePersonPassword(PersonDetail personDetail) throws Exception {
+        return registrationDao.updatePersonPassword(personDetail) ;
+
+    }
 }
