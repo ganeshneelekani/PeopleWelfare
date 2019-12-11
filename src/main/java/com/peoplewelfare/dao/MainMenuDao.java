@@ -10,4 +10,6 @@ public interface MainMenuDao {
 
     public PersonDetail fetchPersonInfo(String personId);
 
+    public List<PersonDetail> fetchDirectList(String personId);
+
 }

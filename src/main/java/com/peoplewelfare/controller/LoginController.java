@@ -59,13 +59,21 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelAndView doLogin(HttpServletRequest request, Model model) {
+    public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response) {
 
-        ModelAndView mav = new ModelAndView("mainMenu");
+        ModelAndView model = new ModelAndView("mainMenu");
 
-        model.addAttribute("personDetail", validatedLogin);
+        List<PersonDetail> personDetailDirectList=mainMenuService.fetchDirectList(validatedLogin.getPersonId());
+        PersonDetail personDetail=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        model.addObject("personDetail", personDetail);
+        model.addObject("personDetailDirectList", personDetailDirectList);
+
+        for (PersonDetail detail:personDetailDirectList){
+            LOGGER.info(detail.getPersonId()+" :::::::  ");
+        }
+
         LOGGER.info("====================4=====================1234"+validatedLogin.getPersonFirstName());
-        return mav;
+        return model;
     }
 
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)

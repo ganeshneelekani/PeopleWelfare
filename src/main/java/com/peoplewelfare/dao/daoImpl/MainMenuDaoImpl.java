@@ -67,6 +67,16 @@ public class MainMenuDaoImpl implements MainMenuDao {
         return  personDetails;
     }
 
+    @Override
+    public List<PersonDetail> fetchDirectList(String personId) {
+
+        Query query = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p.parentReference =:parentReference");
+        query.setParameter("parentReference", personId);
+
+        List<PersonDetail> personDetails = query.list();
+        return  personDetails;
+    }
+
 
     private List<PersonDetail> fetchRecursiveChild(String personId,int n) {
 

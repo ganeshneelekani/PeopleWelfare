@@ -25,4 +25,9 @@ public class MainMenuServiceImpl implements MainMenuService {
     public PersonDetail fetchPersonInfo(String personId) {
         return mainMenuDao.fetchPersonInfo(personId);
     }
+
+    @Override
+    public List<PersonDetail> fetchDirectList(String personId) {
+        return mainMenuDao.fetchDirectList(personId);
+    }
 }

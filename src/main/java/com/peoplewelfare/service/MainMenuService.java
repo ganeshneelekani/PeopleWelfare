@@ -9,4 +9,6 @@ public interface MainMenuService {
     public List<PersonDetail> fetchMemberTreeInfo(String personId);
 
     public PersonDetail fetchPersonInfo(String personId);
+
+    public List<PersonDetail> fetchDirectList(String personId);
 }
