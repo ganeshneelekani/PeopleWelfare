@@ -59,8 +59,9 @@
                                 <td><c:out value="${current.personId}"/><td>
                                <td><c:out value="${current.personFirstName}"/><td>
                                <td><c:out value="${current.personLastName}"/><td>
-                            <td class="text-center"><a class='btn btn-info btn-xs' href="#">
-                            <span class="glyphicon glyphicon-edit"></span> Form</a></td>
+                            <td class="text-center"><a class='btn btn-info btn-xs'
+                            href="/PeopleWelfare/downloadPDF/${current.personId}" target="_blank"
+                            <span class="glyphicon glyphicon-edit"></span> Download Form</a></td>
                             </tr>
                             </c:forEach>
                         </tr>
