@@ -22,29 +22,29 @@ public class MainMenuDaoImpl implements MainMenuDao {
     private SessionFactory sessionFactory;
 
     private List<PersonDetail> personDetailsChild;
-    private  List<PersonDetail> listPersonDetails;
-    private  List<PersonDetail> listChildPersonDetails;
+    private List<PersonDetail> listPersonDetails;
+    private List<PersonDetail> listChildPersonDetails;
 
     @Override
     public List<PersonDetail> fetchMemberTreeInfo(String personId) {
 
 
-         personDetailsChild=new ArrayList<>();
-        listPersonDetails=new ArrayList<>();
-        listChildPersonDetails=new ArrayList<>();
+        personDetailsChild = new ArrayList<>();
+        listPersonDetails = new ArrayList<>();
+        listChildPersonDetails = new ArrayList<>();
 
         Query query = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p.personId =:personId");
         query.setParameter("personId", personId);
 
         List<PersonDetail> personDetails = query.list();
 
-        LOGGER.info("===================ppppppppppppppppppp============"+personDetails.size());
+        LOGGER.info("===================ppppppppppppppppppp============" + personDetails.size());
 
         for (PersonDetail personDetail :
                 personDetails) {
 
             LOGGER.info("=======2.1=====" + personDetail.getPersonId());
-            listPersonDetails = fetchRecursiveChild(personDetail.getPersonId(),3);
+            listPersonDetails = fetchRecursiveChild(personDetail.getPersonId(), 3);
 
         }
 
@@ -63,8 +63,8 @@ public class MainMenuDaoImpl implements MainMenuDao {
         Query query = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p.personId =:personId");
         query.setParameter("personId", personId);
 
-        PersonDetail personDetails = (PersonDetail)query.getSingleResult();
-        return  personDetails;
+        PersonDetail personDetails = (PersonDetail) query.getSingleResult();
+        return personDetails;
     }
 
     @Override
@@ -74,11 +74,11 @@ public class MainMenuDaoImpl implements MainMenuDao {
         query.setParameter("parentReference", personId);
 
         List<PersonDetail> personDetails = query.list();
-        return  personDetails;
+        return personDetails;
     }
 
 
-    private List<PersonDetail> fetchRecursiveChild(String personId,int n) {
+    private List<PersonDetail> fetchRecursiveChild(String personId, int n) {
 
         if (n > 0) {
             LOGGER.info("=======23232323=====");
@@ -99,9 +99,9 @@ public class MainMenuDaoImpl implements MainMenuDao {
                     listChildPersonDetails) {
 
 
-                if(n > 0) {
+                if (n > 0) {
                     LOGGER.info("=======2.2=====" + personDetail.getPersonId());
-                    fetchRecursiveChild(personDetail.getPersonId(),n-1);
+                    fetchRecursiveChild(personDetail.getPersonId(), n - 1);
                 }
 
             }

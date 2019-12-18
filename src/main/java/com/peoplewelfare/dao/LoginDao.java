@@ -9,6 +9,6 @@ import com.peoplewelfare.model.PersonDetail;
  */
 public interface LoginDao {
 
-        public PersonDetail validateUser(Login login);
+    PersonDetail validateUser(Login login);
 
 }

@@ -1,7 +1,9 @@
 package com.peoplewelfare.controller;
 
+import com.peoplewelfare.model.ForgotUser;
 import com.peoplewelfare.model.Login;
 import com.peoplewelfare.model.PersonDetail;
+import com.peoplewelfare.service.ForgotPasswordService;
 import com.peoplewelfare.service.RegistrationService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class RegistrationController {
 
     @Autowired
     RegistrationService registrationService;
+
+    @Autowired
+    ForgotPasswordService forgotPasswordService;
 
     @RequestMapping(value = "/RegisterPerson", method = RequestMethod.GET)
     public ModelAndView getRegistrationModel(HttpServletRequest request, HttpServletResponse response) {
@@ -84,11 +89,9 @@ public class RegistrationController {
                 model.addObject("personRegistration", personDetail);
                 return model;
 
-            }
-
-            else if (frequency < 4 && validReference) {
+            } else if (frequency < 4 && validReference) {
                 PersonDetail details = registrationService.savePersonDetail(personDetail);
-                LOGGER.info("==================3========="+details.getPersonId());
+                LOGGER.info("==================3=========" + details.getPersonId());
 
                 ModelAndView loginModel = new ModelAndView("login");
                 loginModel.addObject("login", new Login());
@@ -111,7 +114,44 @@ public class RegistrationController {
         } catch (Exception e) {
             model.addObject("exceptionMsg", "Some thing went wrong please try registering again");
             model.addObject("personRegistration", new PersonDetail());
-            return  model;
+            return model;
         }
+    }
+
+    @RequestMapping(value = "/ForgotPassword", method = RequestMethod.GET)
+    public ModelAndView userLogin(HttpServletRequest request, HttpServletResponse response) {
+
+        LOGGER.info("================2===================");
+        ModelAndView mav = new ModelAndView("forgotPassword");
+        mav.addObject("forgotpassword", new ForgotUser());
+        return mav;
+    }
+
+
+    @RequestMapping(value = "/UpdateForgotPassword", method = RequestMethod.POST)
+    public Object validateLogin(HttpServletRequest request, HttpServletResponse response,
+                                @ModelAttribute("forgotpassword") ForgotUser forgotUser) {
+
+
+        LOGGER.info(forgotUser.getPersonId() + "===============3===================" + forgotUser.getPassword());
+
+        boolean value = forgotPasswordService.validateUser(forgotUser);
+
+        LOGGER.info(value + " OOOOOOO");
+
+        if (value == true) {
+
+            ModelAndView model = new ModelAndView("login");
+            model.addObject("msg", " Password changed successfully Login to continue");
+            model.addObject("login", new Login());
+            return model;
+        } else {
+
+            ModelAndView model = new ModelAndView("forgotPassword");
+            model.addObject("msg", " PersonId and contact number does not match ");
+            model.addObject("forgotpassword", new ForgotUser());
+            return model;
+        }
+
     }
 }

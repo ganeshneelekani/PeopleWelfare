@@ -8,7 +8,7 @@ import com.peoplewelfare.model.PersonDetail;
  */
 public interface LoginService {
 
-    public PersonDetail validateUser(Login login);
+    PersonDetail validateUser(Login login);
 
 
 }

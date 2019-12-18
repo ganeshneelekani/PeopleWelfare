@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface RegistrationService {
 
-    public List<PersonDetail> validateParentReference();
+    List<PersonDetail> validateParentReference();
 
-    public PersonDetail savePersonDetail(PersonDetail personDetail) throws Exception;
+    PersonDetail savePersonDetail(PersonDetail personDetail) throws Exception;
 
-    public PersonDetail updatePersonDetail(PersonDetail personDetail) throws Exception;
+    PersonDetail updatePersonDetail(PersonDetail personDetail) throws Exception;
 
-    public int updatePersonPassword(PersonDetail personDetail) throws Exception;
+    int updatePersonPassword(PersonDetail personDetail) throws Exception;
 }

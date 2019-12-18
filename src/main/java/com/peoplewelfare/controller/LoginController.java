@@ -9,7 +9,6 @@ import com.peoplewelfare.utility.PersonDetailComparator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -63,22 +61,22 @@ public class LoginController {
 
         ModelAndView model = new ModelAndView("mainMenu");
 
-        List<PersonDetail> personDetailDirectList=mainMenuService.fetchDirectList(validatedLogin.getPersonId());
-        PersonDetail personDetail=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        List<PersonDetail> personDetailDirectList = mainMenuService.fetchDirectList(validatedLogin.getPersonId());
+        PersonDetail personDetail = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
         model.addObject("personDetail", personDetail);
         model.addObject("personDetailDirectList", personDetailDirectList);
 
-        for (PersonDetail detail:personDetailDirectList){
-            LOGGER.info(detail.getPersonId()+" :::::::  ");
+        for (PersonDetail detail : personDetailDirectList) {
+            LOGGER.info(detail.getPersonId() + " :::::::  ");
         }
 
-        LOGGER.info("====================4=====================1234"+validatedLogin.getPersonFirstName());
+        LOGGER.info("====================4=====================1234" + validatedLogin.getPersonFirstName());
         return model;
     }
 
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     public Object validateLogin(HttpServletRequest request, HttpServletResponse response,
-                                      @ModelAttribute("login") Login user, RedirectAttributes redirectAttributes) {
+                                @ModelAttribute("login") Login user, RedirectAttributes redirectAttributes) {
 
 
         LOGGER.info(user.getPersonId() + "===============3===================" + user.getPersonPassword());
@@ -94,7 +92,7 @@ public class LoginController {
             return model;
         } else {
 
-            LOGGER.info("==================4===================="+validatedLogin.getPersonId());
+            LOGGER.info("==================4====================" + validatedLogin.getPersonId());
             return "redirect:/home";
         }
 
@@ -112,9 +110,9 @@ public class LoginController {
 
     @RequestMapping(value = "/viewProfile", method = RequestMethod.GET)
     public ModelAndView viewProfile(HttpServletRequest request, HttpServletResponse response
-                                          ) {
+    ) {
         LOGGER.info("================4 viewProfile ====================");
-        PersonDetail fetchPersonDetail=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        PersonDetail fetchPersonDetail = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
         ModelAndView modelView = new ModelAndView("viewProfile");
         modelView.addObject("personDetail", fetchPersonDetail);
         return modelView;
@@ -124,7 +122,7 @@ public class LoginController {
     public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response
     ) {
         LOGGER.info("================4 viewProfile ====================");
-        fetchPersonDetailInfo=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        fetchPersonDetailInfo = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
         ModelAndView modelView = new ModelAndView("profileUpdate");
         modelView.addObject("personRegistration", fetchPersonDetailInfo);
         return modelView;
@@ -134,7 +132,7 @@ public class LoginController {
     public ModelAndView UpdateChangePassword(HttpServletRequest request, HttpServletResponse response
     ) {
         LOGGER.info("================4 viewProfile ====================");
-        fetchPersonDetailInfo=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        fetchPersonDetailInfo = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
         ModelAndView modelView = new ModelAndView("updatePassword");
         modelView.addObject("personRegistration", fetchPersonDetailInfo);
         return modelView;
@@ -144,7 +142,7 @@ public class LoginController {
     public ModelAndView UpdatePasswordGet(HttpServletRequest request, HttpServletResponse response
     ) {
         LOGGER.info("================4545 viewProfile ====================");
-        fetchPersonDetailInfo=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        fetchPersonDetailInfo = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
         ModelAndView modelView = new ModelAndView("updatePassword");
         modelView.addObject("personRegistration", fetchPersonDetailInfo);
         return modelView;
@@ -152,7 +150,7 @@ public class LoginController {
 
     @RequestMapping(value = "/UpdatePassword", method = RequestMethod.POST)
     public ModelAndView postUpdatePasswordDetails(HttpServletRequest request, HttpServletResponse response,
-                                                @ModelAttribute("personRegistration") PersonDetail personDetail) {
+                                                  @ModelAttribute("personRegistration") PersonDetail personDetail) {
         ModelAndView model = new ModelAndView("updatePassword");
 
 
@@ -179,7 +177,7 @@ public class LoginController {
 
         LOGGER.info("=================== update 5 password===============" + personDetail.getPassword());
 
-        if(personDetail.getPassword().isEmpty()){
+        if (personDetail.getPassword().isEmpty()) {
             model.addObject("personRegistration", new PersonDetail());
             return model;
         }
@@ -187,9 +185,9 @@ public class LoginController {
 
         try {
 
-           int result= registrationService.updatePersonPassword(personDetail);
+            int result = registrationService.updatePersonPassword(personDetail);
 
-           LOGGER.info("==================3 result =========" + result);
+            LOGGER.info("==================3 result =========" + result);
 
             model.addObject("msg", " Password is updated");
             model.addObject("personRegistration", new PersonDetail());
@@ -208,71 +206,70 @@ public class LoginController {
                                                 @ModelAttribute("personRegistration") PersonDetail personDetail) {
         ModelAndView model = new ModelAndView("profileUpdate");
 
-            personDetail.setParentReference(fetchPersonDetailInfo.getParentReference());
-            personDetail.setPassword(fetchPersonDetailInfo.getPassword());
-            personDetail.setVerifyPassword(fetchPersonDetailInfo.getVerifyPassword());
-            personDetail.setPersonId(fetchPersonDetailInfo.getPersonId());
+        personDetail.setParentReference(fetchPersonDetailInfo.getParentReference());
+        personDetail.setPassword(fetchPersonDetailInfo.getPassword());
+        personDetail.setVerifyPassword(fetchPersonDetailInfo.getVerifyPassword());
+        personDetail.setPersonId(fetchPersonDetailInfo.getPersonId());
 
-            LOGGER.info("=================== update 5===============" + personDetail.getParentReference());
-
-
-            LOGGER.info(personDetail.getPersonId());
-            LOGGER.info(personDetail.getPersonFirstName());
-            LOGGER.info(personDetail.getPersonLastName());
-            LOGGER.info(personDetail.getEmailAddress());
-            LOGGER.info(personDetail.getGender());
-            LOGGER.info(personDetail.getContactNumber());
-            LOGGER.info(personDetail.getEmailAddress());
-            LOGGER.info(personDetail.getState());
-            LOGGER.info(personDetail.getCountry());
-            LOGGER.info(personDetail.getNomineeRelation());
-            LOGGER.info(personDetail.getPassword());
-            LOGGER.info(personDetail.getParentReference());
-            LOGGER.info(personDetail.getPersonAddress());
-            LOGGER.info(personDetail.getPinCode());
-
-            try {
-
-                PersonDetail details = registrationService.updatePersonDetail(personDetail);
-                LOGGER.info("==================3=========" + details.getContactNumber());
-
-                model.addObject("msg", " Reference " + personDetail.getPersonId() + " is updated");
-                model.addObject("personRegistration", personDetail);
-                return model;
+        LOGGER.info("=================== update 5===============" + personDetail.getParentReference());
 
 
-            } catch (Exception e) {
-                model.addObject("exceptionMsg", "Some thing went wrong please try registering again");
-                model.addObject("personRegistration", new PersonDetail());
-                return model;
-            }
+        LOGGER.info(personDetail.getPersonId());
+        LOGGER.info(personDetail.getPersonFirstName());
+        LOGGER.info(personDetail.getPersonLastName());
+        LOGGER.info(personDetail.getEmailAddress());
+        LOGGER.info(personDetail.getGender());
+        LOGGER.info(personDetail.getContactNumber());
+        LOGGER.info(personDetail.getEmailAddress());
+        LOGGER.info(personDetail.getState());
+        LOGGER.info(personDetail.getCountry());
+        LOGGER.info(personDetail.getNomineeRelation());
+        LOGGER.info(personDetail.getPassword());
+        LOGGER.info(personDetail.getParentReference());
+        LOGGER.info(personDetail.getPersonAddress());
+        LOGGER.info(personDetail.getPinCode());
+
+        try {
+
+            PersonDetail details = registrationService.updatePersonDetail(personDetail);
+            LOGGER.info("==================3=========" + details.getContactNumber());
+
+            model.addObject("msg", " Reference " + personDetail.getPersonId() + " is updated");
+            model.addObject("personRegistration", personDetail);
+            return model;
+
+
+        } catch (Exception e) {
+            model.addObject("exceptionMsg", "Some thing went wrong please try registering again");
+            model.addObject("personRegistration", new PersonDetail());
+            return model;
         }
-
+    }
 
 
     @RequestMapping(value = "/MemberTree", method = RequestMethod.GET)
     public ModelAndView getMemberTree(HttpServletRequest request, HttpServletResponse response,
-                           RedirectAttributes redirectAttributes) {
+                                      RedirectAttributes redirectAttributes) {
 
-        PersonDetail fetchPersonDetail=mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        PersonDetail fetchPersonDetail = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
 
-        LOGGER.info("===========================1 Member Tree======================="+validatedLogin.getPersonId());
+        LOGGER.info("===========================1 Member Tree=======================" + validatedLogin.getPersonId());
 
 
-        List<PersonDetail> detailList=mainMenuService.fetchMemberTreeInfo(validatedLogin.getPersonId());
+        List<PersonDetail> detailList = mainMenuService.fetchMemberTreeInfo(validatedLogin.getPersonId());
 
 
         Collections.sort(detailList, new PersonDetailComparator());
 
-        StringBuffer nodes=new StringBuffer();
+        StringBuffer nodes = new StringBuffer();
         for (PersonDetail personDetail : detailList) {
 
-            LOGGER.info("=======5.3=====" + personDetail.getPersonId() +"   "+personDetail.getParentReference());
+            LOGGER.info("=======5.3=====" + personDetail.getPersonId() + "   " + personDetail.getParentReference());
 
-            nodes.append(" { id: "+ "\"" +personDetail.getPersonId() +"\""+", pid: "+"\""+personDetail.getParentReference()+
-                    "\" "+", tags: " +
-                    "[\"family_template_11\"], name: "+"\""+ personDetail.getPersonFirstName() +"\""+", title: "+
-                    "\""+personDetail.getPersonId()+"\""+"},").append(
+            nodes.append(" { id: " + "\"" + personDetail.getPersonId() + "\"" + ", pid: " + "\"" + personDetail.getParentReference() +
+                    "\" " + ", tags: " +
+                    "[\"family_template_11\"], name: " + "\"" + personDetail.getPersonFirstName() + "\"" + ", title: " +
+                    "\"" + personDetail.getPersonId() + "\"" + "},").append(
                     "\n");
 
         }

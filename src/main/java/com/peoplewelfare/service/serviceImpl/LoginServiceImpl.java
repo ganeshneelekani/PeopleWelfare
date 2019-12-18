@@ -24,8 +24,8 @@ public class LoginServiceImpl implements LoginService {
     public PersonDetail validateUser(Login login) {
 
         LOGGER.info(" ========== INSIDE LoginServiceImpl ");
-        PersonDetail validatedLogin =loginDao.validateUser(login);
-        return  validatedLogin;
+        PersonDetail validatedLogin = loginDao.validateUser(login);
+        return validatedLogin;
     }
 
 }

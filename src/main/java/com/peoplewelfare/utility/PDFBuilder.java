@@ -1,23 +1,16 @@
 package com.peoplewelfare.utility;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.peoplewelfare.controller.PdfGeneratorController;
 import com.peoplewelfare.model.PersonDetail;
 import org.apache.log4j.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 public class PDFBuilder extends AbstractITextPdfView {
 
@@ -31,18 +24,27 @@ public class PDFBuilder extends AbstractITextPdfView {
         List<PersonDetail> listOfPerson = (List<PersonDetail>) model.get("PersonDetail");
 
 
-
         for (PersonDetail personDetail : listOfPerson) {
             LOGGER.info(personDetail.getPersonFirstName());
         }
 
+        PdfPCell text = new PdfPCell();
+        text.setPaddingBottom(15);
+        text.setPaddingLeft(10);
+        text.setBorder(Rectangle.BOTTOM);
+        text.setBorderColor(BaseColor.LIGHT_GRAY);
+        text.addElement(new Phrase("iText PDF Header Footer Example", new Font(Font.FontFamily.HELVETICA, 12)));
+        text.addElement(new Phrase("https://memorynotfound.com", new Font(Font.FontFamily.HELVETICA, 8)));
 
-        doc.add(new Paragraph("Recommended books for Spring framework"));
+        doc.add(new Paragraph("Recommended books for Spring framework1"));
+
+        doc.add(text);
 
         PdfPTable table = new PdfPTable(5);
         table.setWidthPercentage(100.0f);
-        table.setWidths(new float[] {1.0f, 2.0f, 2.0f, 3.0f, 1.0f});
+        table.setWidths(new float[]{1.0f, 2.0f, 2.0f, 3.0f, 1.0f});
         table.setSpacingBefore(10);
+
 
         // define font for table header row
         Font font = FontFactory.getFont(FontFactory.HELVETICA);

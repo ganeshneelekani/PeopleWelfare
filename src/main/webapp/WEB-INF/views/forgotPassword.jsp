@@ -20,7 +20,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
                integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
                crossorigin="anonymous"></script>
-            <script type="text/javascript" src="bootstrap/js/loginValidation.js"></script> 
+            <script type="text/javascript" src="bootstrap/js/forgotPasswordValidation.js"></script> 
             <script type="text/javascript" src="bootstrap/js/datePicker.js"></script> 
    </head>
    <body>
@@ -83,7 +83,9 @@
             </div>
             <div class="col-sm-4">
                <div class="card card-container">
-                  <form:form id="loginForm" modelAttribute="login" action="/PeopleWelfare/loginUser" method="post"
+                  <form:form id="forgotpassword" modelAttribute="forgotpassword"
+                  action="/PeopleWelfare/UpdateForgotPassword"
+                  method="post"
                   class="form-signin" >
                      <table align="center">
                         <span class="error">${msg}</span>
@@ -95,25 +97,22 @@
                         </tr>
                         <tr>
                            <td>
-                              <form:password path="personPassword" name="personPassword" id="personPassword" placeholder="Password" class="form-control"  />
+                              <form:password path="contactNumber" name="contactNumber" id="contactNumber"
+                              placeholder="ContactNumber" class="form-control"  />
                            </td>
                         </tr>
+                        <tr>
+                                                   <td>
+                                                      <form:password path="password" name="password" id="password"
+                                                      placeholder="New Password" class="form-control"  />
+                                                   </td>
+                                                </tr>
                         <tr>
                            <td>
                               <form:button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" id="submit" >Sign in</form:button>
                            </td>
                         </tr>
-                        <tr>
-                           <td>
-                              <a href="/PeopleWelfare/ForgotPassword" class="forgot-password">
-                              Forgot the password?
-                              </a>
-                           </br>
-                               <a class="register-user" href="/PeopleWelfare/RegisterPerson">
-                                Register Person
-                               </a>
-                            </td>
-                        </tr>
+
                         <tr></tr>
                      </table>
                   </form:form>

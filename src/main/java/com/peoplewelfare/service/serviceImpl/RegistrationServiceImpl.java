@@ -20,24 +20,24 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public List<PersonDetail> validateParentReference() {
 
-        return  registrationDao.validateParentReference();
+        return registrationDao.validateParentReference();
     }
 
     @Override
-    public PersonDetail savePersonDetail(PersonDetail personDetail) throws Exception{
-        PersonDetail detail=registrationDao.savePersonDetail(personDetail) ;
+    public PersonDetail savePersonDetail(PersonDetail personDetail) throws Exception {
+        PersonDetail detail = registrationDao.savePersonDetail(personDetail);
         return detail;
     }
 
     @Override
     public PersonDetail updatePersonDetail(PersonDetail personDetail) throws Exception {
-        PersonDetail detail=registrationDao.updatePersonDetail(personDetail) ;
+        PersonDetail detail = registrationDao.updatePersonDetail(personDetail);
         return detail;
     }
 
     @Override
     public int updatePersonPassword(PersonDetail personDetail) throws Exception {
-        return registrationDao.updatePersonPassword(personDetail) ;
+        return registrationDao.updatePersonPassword(personDetail);
 
     }
 }

@@ -73,7 +73,7 @@ public class RegistrationDaoImpl implements RegistrationDao {
     @Override
     public int updatePersonPassword(PersonDetail personDetail) throws Exception {
 
-        LOGGER.info("===============================33333==============="+personDetail.getPassword() + "   "+personDetail.getPersonId());
+        LOGGER.info("===============================33333===============" + personDetail.getPassword() + "   " + personDetail.getPersonId());
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("update PersonDetail set password = :password where personId = :personId");

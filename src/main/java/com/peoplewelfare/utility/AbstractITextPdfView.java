@@ -1,23 +1,20 @@
 package com.peoplewelfare.utility;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.view.AbstractView;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.springframework.web.servlet.view.AbstractView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.util.Map;
 
 /**
  * This class is a work around for working with iText 5.x in Spring.
  * The code here is almost identical to the AbstractPdfView class.
- *
  */
 public abstract class AbstractITextPdfView extends AbstractView {
 

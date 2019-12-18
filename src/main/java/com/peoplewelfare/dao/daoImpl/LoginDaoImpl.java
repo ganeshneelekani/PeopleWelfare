@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 /**
  * Created by gn033604 on 9/2/17.
  */
@@ -33,30 +31,28 @@ public class LoginDaoImpl implements LoginDao {
         query.setParameter("personId", validateLogin.getPersonId());
         query.setParameter("personPassword", validateLogin.getPersonPassword());
 
-        if(query.list().size() >0){
-        PersonDetail personDetail= (PersonDetail) query.getSingleResult();
+        if (query.list().size() > 0) {
+            PersonDetail personDetail = (PersonDetail) query.getSingleResult();
 
-        LOGGER.info(personDetail.getPersonId());
-        LOGGER.info(personDetail.getPersonFirstName());
-        LOGGER.info(personDetail.getPersonLastName());
-        LOGGER.info(personDetail.getEmailAddress());
-        LOGGER.info(personDetail.getGender());
-        LOGGER.info(personDetail.getContactNumber());
-        LOGGER.info(personDetail.getEmailAddress());
-        LOGGER.info(personDetail.getState());
-        LOGGER.info(personDetail.getCountry());
-        LOGGER.info(personDetail.getNomineeRelation());
-        LOGGER.info(personDetail.getPassword());
-        LOGGER.info(personDetail.getParentReference());
-        LOGGER.info(personDetail.getPersonAddress());
-
+            LOGGER.info(personDetail.getPersonId());
+            LOGGER.info(personDetail.getPersonFirstName());
+            LOGGER.info(personDetail.getPersonLastName());
+            LOGGER.info(personDetail.getEmailAddress());
+            LOGGER.info(personDetail.getGender());
+            LOGGER.info(personDetail.getContactNumber());
+            LOGGER.info(personDetail.getEmailAddress());
+            LOGGER.info(personDetail.getState());
+            LOGGER.info(personDetail.getCountry());
+            LOGGER.info(personDetail.getNomineeRelation());
+            LOGGER.info(personDetail.getPassword());
+            LOGGER.info(personDetail.getParentReference());
+            LOGGER.info(personDetail.getPersonAddress());
 
 
             LOGGER.info("======================2====================");
-            return  personDetail;
+            return personDetail;
 
-        }
-        else{
+        } else {
 
             LOGGER.info("======================3====================");
             return null;
