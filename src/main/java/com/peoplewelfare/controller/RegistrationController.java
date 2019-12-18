@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -84,12 +86,20 @@ public class RegistrationController {
             LOGGER.info(personDetail.getParentReference());
             LOGGER.info(personDetail.getPersonAddress());
 
-            if (frequency >= 3) {
-                model.addObject("msg", " Reference " + personDetail.getParentReference() + " has 3 child member already");
+            if (frequency >= 2) {
+                model.addObject("msg", " Reference " + personDetail.getParentReference() + " has 2 child member " +
+                        "already");
                 model.addObject("personRegistration", personDetail);
                 return model;
 
-            } else if (frequency < 4 && validReference) {
+            } else if (frequency < 3 && validReference) {
+
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = new Date();
+
+                LOGGER.info("==================DATE=========" + formatter.format(date));
+                personDetail.setPersonJoinedDate(date);
+
                 PersonDetail details = registrationService.savePersonDetail(personDetail);
                 LOGGER.info("==================3=========" + details.getPersonId());
 
@@ -105,7 +115,7 @@ public class RegistrationController {
 
                 LOGGER.info("=======================5.2========================");
 
-                model.addObject("msg", " Reference " + personDetail.getParentReference() + " is registered");
+                model.addObject("msg", " Reference " + personDetail.getParentReference() + " does not exist");
                 model.addObject("personRegistration", personDetail);
                 return model;
             }

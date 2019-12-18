@@ -116,6 +116,9 @@ $(document).ready(function() {
                 regex: "Cannot have special character",
                 required: "Last Name Required"
             },
+            country:{
+            required: "Please provide the Country"
+            },
             nominee: {
                 required: "Please provide the Nominee name"
             },

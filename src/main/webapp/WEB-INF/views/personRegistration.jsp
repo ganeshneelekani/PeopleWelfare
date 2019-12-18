@@ -99,7 +99,7 @@
          <div >
             <div class="panel panel-default">
                <div class="panel-body">
-                  <form:form id="updatePersonRegistrationForm" modelAttribute="personRegistration"
+                  <form:form id="personRegistrationForm" modelAttribute="personRegistration"
                      action="/PeopleWelfare/RegisterPersonDetails" method="post" class="form-signin">
                      <span class="error">${exceptionMsg}</span>
                      <div class="form-group">
@@ -148,6 +148,7 @@
                         <div class="col-xs-6 col-sm-6 col-md-6">
                            <div class="form-group">
                               <form:select type="text" path="country" name="country" id="country" class="form-control" placeholder="country">
+                              <option>Select Country</option>
                               </form:select>
                            </div>
                         </div>

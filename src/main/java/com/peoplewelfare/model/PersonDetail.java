@@ -1,6 +1,7 @@
 package com.peoplewelfare.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "PERSON_DETAILS")
@@ -15,6 +16,10 @@ public class PersonDetail {
 
     @Column(name = "PERSON_LASTNAME")
     private String personLastName;
+
+    @Column(name = "PERSON_JOINED_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date personJoinedDate;
 
     @Column(name = "PERSON_GENDER")
     private String gender;
@@ -170,5 +175,13 @@ public class PersonDetail {
 
     public void setVerifyPassword(String verifyPassword) {
         this.verifyPassword = verifyPassword;
+    }
+
+    public Date getPersonJoinedDate() {
+        return personJoinedDate;
+    }
+
+    public void setPersonJoinedDate(Date personJoinedDate) {
+        this.personJoinedDate = personJoinedDate;
     }
 }

@@ -28,6 +28,8 @@
              </br></br>
                       </br>
                       </br>
+                      <h2> Welcome ${personDetail.personFirstName} ${personDetail.personLastName} - ${personDetail
+                      .personId}</h2>
 </br>
     </br>
     </br></br>
@@ -45,10 +47,11 @@
                     <tr>
                         <td>Person ID</td>
                         <td> </td>
-
                         <td>First Name</td>
                         <td></td>
                         <td>Last Name</td>
+                        <td></td>
+                        <td>Joined Date</td>
                     </tr>
                 </thead>
 
@@ -59,6 +62,7 @@
                                 <td><c:out value="${current.personId}"/><td>
                                <td><c:out value="${current.personFirstName}"/><td>
                                <td><c:out value="${current.personLastName}"/><td>
+                               <td><c:out value="${current.personJoinedDate}"/><td>
                             <td class="text-center"><a class='btn btn-info btn-xs'
                             href="/PeopleWelfare/downloadPDF/${current.personId}" target="_blank"
                             <span class="glyphicon glyphicon-edit"></span> Download Form</a></td>

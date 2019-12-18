@@ -86,6 +86,14 @@
                                  </div>
                               </div>
                               <div class="row">
+                                                               <div class="col-md-6">
+                                                                  <label>Joining Date</label>
+                                                               </div>
+                                                               <div class="col-md-6">
+                                                                  <p>${personDetail.personJoinedDate}</p>
+                                                               </div>
+                                                            </div>
+                              <div class="row">
                                  <div class="col-md-6">
                                     <label>Email</label>
                                  </div>

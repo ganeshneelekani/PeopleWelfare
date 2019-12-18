@@ -26,7 +26,6 @@ public class PdfGeneratorController {
 
         List<PersonDetail> personDetailDirectList = mainMenuService.fetchDirectList(personId);
 
-
         for (PersonDetail personDetail : personDetailDirectList) {
             LOGGER.info(personDetail.getPersonId());
         }
@@ -37,6 +36,4 @@ public class PdfGeneratorController {
         return new ModelAndView("pdfView", "PersonDetail", personDetailDirectList);
 
     }
-
-
 }

@@ -111,8 +111,11 @@ public class LoginController {
     @RequestMapping(value = "/viewProfile", method = RequestMethod.GET)
     public ModelAndView viewProfile(HttpServletRequest request, HttpServletResponse response
     ) {
-        LOGGER.info("================4 viewProfile ====================");
+
         PersonDetail fetchPersonDetail = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        LOGGER.info("================4 viewProfile ====================" + fetchPersonDetail.getPersonJoinedDate());
+
+
         ModelAndView modelView = new ModelAndView("viewProfile");
         modelView.addObject("personDetail", fetchPersonDetail);
         return modelView;
