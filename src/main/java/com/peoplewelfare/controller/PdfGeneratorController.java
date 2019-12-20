@@ -15,10 +15,9 @@ import java.util.List;
 @Controller
 public class PdfGeneratorController {
 
+    static Logger LOGGER = Logger.getLogger(PdfGeneratorController.class);
     @Autowired
     MainMenuService mainMenuService;
-
-    static Logger LOGGER = Logger.getLogger(PdfGeneratorController.class);
 
     @RequestMapping(value = "/downloadPDF/{id}", method = RequestMethod.GET)
     public ModelAndView validateLogin(@PathVariable("id") String personId

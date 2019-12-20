@@ -35,21 +35,26 @@ public class ForgotPasswordDaoImpl implements ForgotPasswordDao {
         LOGGER.info("===================ppppppppppppppppppp============" + forgotUsers.size());
 
         if (forgotUsers.size() > 0) {
-
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();
-
-            Query queryUpdate = session.createQuery("update PersonDetail set password = :password" +
-                    " where personId = :personId");
-            queryUpdate.setParameter("password", forgotUser.getPassword());
-            queryUpdate.setParameter("personId", forgotUser.getPersonId());
-            int result = queryUpdate.executeUpdate();
-            if (session.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
-                session.getTransaction().commit();
-            }
-            session.close();
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void updatePassword(ForgotUser forgotUser) {
+
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query queryUpdate = session.createQuery("update PersonDetail set password = :password" +
+                " where personId = :personId");
+        queryUpdate.setParameter("password", forgotUser.getPassword());
+        queryUpdate.setParameter("personId", forgotUser.getPersonId());
+        int result = queryUpdate.executeUpdate();
+        if (session.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
+            session.getTransaction().commit();
+        }
+        session.close();
+
     }
 }

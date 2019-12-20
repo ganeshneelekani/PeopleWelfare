@@ -24,35 +24,38 @@ $(document).ready(function() {
     }, "Please specify a different value");
 
     // validate signup form on keyup and submit
-    $("#updatePasswordForm").validate({
+    $("#forgotpassword").validate({
         //                onkeyup: false,
         //                errorClass: "req_mess",
         //                ignore: ":hidden",
         //                validClass: "signup_valid_class",
         //                errorClass: "signup_error_class",
         rules: {
-            password: {
-                required: true,
-                minlength: 6
+            personId: {
+               minlength: 7,
+               maxlength: 7,
+               required: true,
+                             // regex: /^[A-Za-z0-9]{7,7}$/
+               regex: /^[a-zA-Z]{2}[0-9]{5,5}$/
             },
-
-            verifyPassword: {
+            contactNumber: {
                 required: true,
-                minlength: 6,
-                equalTo: password
+                regex: /^[0-9]{10,10}$/,
+                minlength: 10,
+                maxlength: 10
             },
-
-
         },
         messages: {
-
-            password: {
-                required: "Password Required",
-                minlength: "Password must be atleast 6 character long"
-            },
-            verifyPassword: {
-                required: "Enter Confirm Password Same as Password",
-                minlength: "Password must be atleast 6 character long"
+            personId: {
+                            required: "Person Id cannot be blank",
+                            regex: "Valid Person ID is PP00000",
+                            minlength: "7 characters are allowed",
+                            maxlength: "7 characters are allowed"
+                        },
+            contactNumber: {
+                regex: "Your Number must be at 10 digit Number EX : 9999999999",
+                required: "Please provide Contact Number",
+                minlength: "Your Contact Number must be at 10 digit Number"
             },
         },
         submitHandler: function(form) {

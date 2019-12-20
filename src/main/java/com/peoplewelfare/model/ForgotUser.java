@@ -8,6 +8,10 @@ public class ForgotUser {
 
     private String password;
 
+    private String reEnterPassword;
+
+    private String otp;
+
     public String getPersonId() {
         return personId;
     }
@@ -30,5 +34,21 @@ public class ForgotUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getReEnterPassword() {
+        return reEnterPassword;
+    }
+
+    public void setReEnterPassword(String reEnterPassword) {
+        this.reEnterPassword = reEnterPassword;
+    }
+
+    public String getOtp() {
+        return otp;
+    }
+
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 }

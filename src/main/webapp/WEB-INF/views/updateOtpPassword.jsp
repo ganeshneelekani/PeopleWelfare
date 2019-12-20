@@ -20,7 +20,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
                integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
                crossorigin="anonymous"></script>
-            <script type="text/javascript" src="bootstrap/js/loginContactNumberValidation.js"></script> 
+            <script type="text/javascript" src="bootstrap/js/forgotPasswordValidation.js"></script> 
             <script type="text/javascript" src="bootstrap/js/datePicker.js"></script> 
    </head>
    <body>
@@ -83,25 +83,33 @@
             </div>
             <div class="col-sm-4">
                <div class="card card-container">
-                  <form:form id="forgotpassword" modelAttribute="forgotpassword"
-                  action="/PeopleWelfare/SendContactNumber"
+                  <form:form id="updatePassword" modelAttribute="updatePassword"
+                  action="/PeopleWelfare/UpdateForgotPassword"
                   method="post"
                   class="form-signin" >
                      <table align="center">
                         <span class="error">${msg}</span>
-                        <h5> OTP will be sent to mentioned contact number</h5>
 
                         <tr>
                            <td>
-                              <form:input path="personId" name="personId" id="personId" placeholder="Person Id" class="form-control"  />
+                              <form:input path="otp" name="otp" id="otp" placeholder="OTP"
+                              class="form-control"  />
                            </td>
                         </tr>
                         <tr>
-                           <td>
-                              <form:input path="contactNumber" name="contactNumber" id="contactNumber"
-                              placeholder="ContactNumber" class="form-control"  />
-                           </td>
-                        </tr>
+                                                                           <td>
+                                                                              <form:password path="password" name="password" id="password"
+                                                                              placeholder="New Password" class="form-control"  />
+                                                                           </td>
+                                                                        </tr>
+                                                <tr>
+                        <tr>
+                                                   <td>
+                                                      <form:password path="reEnterPassword" name="reEnterPassword" id="reEnterPassword"
+                                                      placeholder="Re Enter Password" class="form-control"  />
+                                                   </td>
+                                                </tr>
+                        <tr>
                            <td>
                               <form:button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" id="submit" >Sign in</form:button>
                            </td>

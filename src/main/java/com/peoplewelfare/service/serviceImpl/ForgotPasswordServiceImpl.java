@@ -16,4 +16,9 @@ public class ForgotPasswordServiceImpl implements ForgotPasswordService {
     public boolean validateUser(ForgotUser forgotUser) {
         return forgotPasswordDao.validateUser(forgotUser);
     }
+
+    @Override
+    public void updatePassword(ForgotUser forgotUser) {
+        forgotPasswordDao.updatePassword(forgotUser);
+    }
 }

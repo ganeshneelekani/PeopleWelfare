@@ -24,47 +24,43 @@ $(document).ready(function() {
     }, "Please specify a different value");
 
     // validate signup form on keyup and submit
-    $("#forgotpassword").validate({
+    $("#updatePassword").validate({
         //                onkeyup: false,
         //                errorClass: "req_mess",
         //                ignore: ":hidden",
         //                validClass: "signup_valid_class",
         //                errorClass: "signup_error_class",
         rules: {
-            personId: {
-               minlength: 7,
-               maxlength: 7,
-               required: true,
-                             // regex: /^[A-Za-z0-9]{7,7}$/
-               regex: /^[a-zA-Z]{2}[0-9]{5,5}$/
-            },
-            contactNumber: {
+            otp: {
                 required: true,
-                regex: /^[0-9]{10,10}$/,
-                minlength: 10,
-                maxlength: 10
+                minlength: 6,
+                maxlength: 6
             },
             password: {
-                required: true,
-                minlength: 6
-            }
+                            required: true,
+                            minlength: 6
+                        },
+                        reEnterPassword: {
+                            required: true,
+                            minlength: 6,
+                            equalTo: password
+                        },
         },
         messages: {
-            personId: {
-                            required: "Person Id cannot be blank",
-                            regex: "Valid Person ID is PP00000",
-                            minlength: "7 characters are allowed",
-                            maxlength: "7 characters are allowed"
+            otp: {
+                            regex: "OTP must be at 6 digit Number EX : 555555",
+                            required: "Please provide OTP",
+                            minlength: "Your OTP 6 digit Number",
+                            maxlength: "Your OTP 6 digit Number"
                         },
-            contactNumber: {
-                regex: "Your Number must be at 10 digit Number EX : 9999999999",
-                required: "Please provide Contact Number",
-                minlength: "Your Contact Number must be at 10 digit Number"
-            },
-            password: {
-                required: "Password Required",
-                minlength: "Password must be atleast 6 character long"
-            },
+                        password: {
+                            required: "Password Required",
+                            minlength: "Password must be atleast 6 character long"
+                        },
+                        reEnterPassword: {
+                            required: "Enter Confirm Password Same as Password",
+                            minlength: "Password must be atleast 6 character long"
+                        },
         },
         submitHandler: function(form) {
             return true;

@@ -1,24 +1,23 @@
-package com.peoplewelfare.controller;
+package com.peoplewelfare.utility;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
-public class SampleClass {
-
-    public static void main(String[] args) {
+public class SendSms {
 
 
-        String s1 = "desk";
-        String s2 = "345";
+    public void sendSms(String contactNumber, String smsMessage) {
+
         try {
             // Construct data
             String apiKey = "apikey=" + "P230OmN1eEs-im2zdQORmXW9EMEUzxi8EJssURS7Rx";
-            String message = "&message=" + "Hi this is your " + s1 + " and otp is " + s2;
+            String message = "&message=" + smsMessage;
             String sender = "&sender=" + "PWADMN";
-            String numbers = "&numbers=" + "917829108302";
+            String numbers = "&numbers=" + contactNumber;
 
             // Send data
             HttpURLConnection conn = (HttpURLConnection) new URL("https://api.textlocal.in/send/?").openConnection();
@@ -40,5 +39,18 @@ public class SampleClass {
             System.out.println("Error SMS " + e);
 
         }
+
     }
+
+    public String getRandomNumberString() {
+        // It will generate 6 digit random Number.
+        // from 0 to 999999
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+
+        // this will convert any number sequence into 6 character.
+        return String.format("%06d", number);
+    }
+
+
 }

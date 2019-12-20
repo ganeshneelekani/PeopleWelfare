@@ -5,6 +5,7 @@ import com.peoplewelfare.model.Login;
 import com.peoplewelfare.model.PersonDetail;
 import com.peoplewelfare.service.ForgotPasswordService;
 import com.peoplewelfare.service.RegistrationService;
+import com.peoplewelfare.utility.SendSms;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,11 @@ public class RegistrationController {
 
     @Autowired
     ForgotPasswordService forgotPasswordService;
+
+    SendSms sendSms;
+    String Otp;
+
+    String personId;
 
     @RequestMapping(value = "/RegisterPerson", method = RequestMethod.GET)
     public ModelAndView getRegistrationModel(HttpServletRequest request, HttpServletResponse response) {
@@ -109,6 +115,13 @@ public class RegistrationController {
                         " " +
                         "Please " +
                         "login to continue");
+
+                sendSms = new SendSms();
+                sendSms.sendSms("91" + details.getContactNumber(),
+                        "Welcome " + details.getPersonFirstName() + " " + details.getPersonLastName() + ", " + " you are " +
+                                "registered to People " +
+                                "Welfare with " +
+                                "the id " + details.getPersonId());
                 return loginModel;
 
             } else {
@@ -119,8 +132,6 @@ public class RegistrationController {
                 model.addObject("personRegistration", personDetail);
                 return model;
             }
-
-
         } catch (Exception e) {
             model.addObject("exceptionMsg", "Some thing went wrong please try registering again");
             model.addObject("personRegistration", new PersonDetail());
@@ -138,27 +149,59 @@ public class RegistrationController {
     }
 
 
-    @RequestMapping(value = "/UpdateForgotPassword", method = RequestMethod.POST)
+    @RequestMapping(value = "/SendContactNumber", method = RequestMethod.POST)
     public Object validateLogin(HttpServletRequest request, HttpServletResponse response,
                                 @ModelAttribute("forgotpassword") ForgotUser forgotUser) {
 
 
         LOGGER.info(forgotUser.getPersonId() + "===============3===================" + forgotUser.getPassword());
-
+        personId = forgotUser.getPersonId();
         boolean value = forgotPasswordService.validateUser(forgotUser);
 
         LOGGER.info(value + " OOOOOOO");
 
         if (value == true) {
 
-            ModelAndView model = new ModelAndView("login");
-            model.addObject("msg", " Password changed successfully Login to continue");
-            model.addObject("login", new Login());
+            sendSms = new SendSms();
+            Otp = sendSms.getRandomNumberString();
+            LOGGER.info("======OTP====" + Otp);
+            sendSms.sendSms("91" + forgotUser.getContactNumber(), "OTP for change password is " + Otp);
+
+            ModelAndView model = new ModelAndView("updateOtpPassword");
+            model.addObject("updatePassword", new ForgotUser());
             return model;
         } else {
 
             ModelAndView model = new ModelAndView("forgotPassword");
             model.addObject("msg", " PersonId and contact number does not match ");
+            model.addObject("forgotpassword", new ForgotUser());
+            return model;
+        }
+
+    }
+
+    @RequestMapping(value = "/UpdateForgotPassword", method = RequestMethod.POST)
+    public Object UpdateForgotPassword(HttpServletRequest request, HttpServletResponse response,
+                                       @ModelAttribute("updatePassword") ForgotUser forgotUser) {
+
+        forgotUser.setPersonId(personId);
+
+        LOGGER.info(Otp + "===============3.1===================" + forgotUser.getOtp());
+
+        if (Otp.equals(forgotUser.getOtp())) {
+
+            LOGGER.info(Otp + "===============3.2.2===================" + forgotUser.getOtp());
+            forgotPasswordService.updatePassword(forgotUser);
+            ModelAndView model = new ModelAndView("login");
+            model.addObject("msg", " Password changed successfully Login to continue");
+            model.addObject("login", new Login());
+
+            return model;
+
+        } else {
+
+            ModelAndView model = new ModelAndView("forgotPassword");
+            model.addObject("msg", " OTP does not match ");
             model.addObject("forgotpassword", new ForgotUser());
             return model;
         }
