@@ -23,6 +23,7 @@ public class PdfGeneratorController {
     public ModelAndView validateLogin(@PathVariable("id") String personId
     ) {
 
+        PersonDetail fetchPersonDetail = mainMenuService.fetchPersonInfo(personId);
         List<PersonDetail> personDetailDirectList = mainMenuService.fetchDirectList(personId);
 
         for (PersonDetail personDetail : personDetailDirectList) {
@@ -31,8 +32,11 @@ public class PdfGeneratorController {
 
         LOGGER.info("========PDF==================" + personId);
 
+        ModelAndView modelView = new ModelAndView("pdfView");
+        modelView.addObject("personDetailList", personDetailDirectList);
+        modelView.addObject("personDetail", fetchPersonDetail);
 
-        return new ModelAndView("pdfView", "PersonDetail", personDetailDirectList);
+        return modelView;
 
     }
 }
