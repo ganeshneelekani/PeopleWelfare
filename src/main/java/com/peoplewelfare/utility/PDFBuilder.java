@@ -1,7 +1,5 @@
 package com.peoplewelfare.utility;
 
-import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -58,9 +56,20 @@ public class PDFBuilder extends AbstractITextPdfView {
         Font darkGrey = new Font(Font.FontFamily.HELVETICA, 13.0f, Font.BOLDITALIC, BaseColor.DARK_GRAY);
         Font header = new Font(Font.FontFamily.HELVETICA, 12.0f, Font.BOLD, BaseColor.DARK_GRAY);
 
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+
+        String path = classLoader.getResource("peopleWelfare.jpg").getPath();
+
+        Image image = Image.getInstance(path);
+        LOGGER.info("====IMAGE PATH ===" + path);
+        image.setAbsolutePosition(100, 250);
+        image.setBackgroundColor(BaseColor.GREEN);
+
+        doc.add(image);
         Paragraph preface = new Paragraph("     People Welfare foundation", orange);
         preface.setAlignment(Element.ALIGN_CENTER);
         doc.add(preface);
+
 
         doc.add(text);
 
