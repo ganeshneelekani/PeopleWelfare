@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -61,7 +62,7 @@ public class LoginController {
 
         ModelAndView model = new ModelAndView("mainMenu");
 
-        List<PersonDetail> personDetailDirectList = mainMenuService.fetchDirectList(validatedLogin.getPersonId());
+        List<PersonDetail> personDetailDirectList = mainMenuService.fetchDirectParentList(validatedLogin.getPersonId());
         PersonDetail personDetail = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
         model.addObject("personDetail", personDetail);
         model.addObject("personDetailDirectList", personDetailDirectList);
@@ -284,5 +285,30 @@ public class LoginController {
         modelView.addObject("nodes", nodes);
         modelView.addObject("personDetail", fetchPersonDetail);
         return modelView;
+    }
+
+    @RequestMapping(value = "/downloadForm1", method = RequestMethod.GET)
+    public ModelAndView validateLogin(
+    ) {
+
+        PersonDetail fetchPersonDetail = mainMenuService.fetchPersonInfo(validatedLogin.getPersonId());
+        List<PersonDetail> personDetailDirectList = mainMenuService.fetchDirectParentList(validatedLogin.getPersonId());
+
+        float listSize=personDetailDirectList.size();
+        float distributionAmount=1000/listSize;
+
+        for (PersonDetail personDetail : personDetailDirectList) {
+            LOGGER.info(personDetail.getPersonId());
+        }
+
+        LOGGER.info("========PDF==================" + validatedLogin.getPersonId());
+
+        ModelAndView modelView = new ModelAndView("pdfView");
+        modelView.addObject("personDetailList", personDetailDirectList);
+        modelView.addObject("personDetail", fetchPersonDetail);
+        modelView.addObject("distributionAmount",  Math.round(distributionAmount));
+
+        return modelView;
+
     }
 }

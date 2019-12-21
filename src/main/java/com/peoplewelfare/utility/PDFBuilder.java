@@ -1,5 +1,7 @@
 package com.peoplewelfare.utility;
 
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -26,10 +28,14 @@ public class PDFBuilder extends AbstractITextPdfView {
         List<PersonDetail> listOfPerson = (List<PersonDetail>) model.get("personDetailList");
         PersonDetail pd = (PersonDetail) model.get("personDetail");
 
+        int distributionAmount=(int)model.get("distributionAmount");
+
 
         for (PersonDetail personDetail : listOfPerson) {
             LOGGER.info(personDetail.getPersonFirstName());
         }
+
+
 
         Rectangle rect = new Rectangle(577, 825, 18, 15); // you can resize rectangle
         rect.enableBorderSide(1);
@@ -119,22 +125,23 @@ public class PDFBuilder extends AbstractITextPdfView {
             cell1.setMinimumHeight(20.0f);
             table.addCell(cell1);
 
-            PdfPCell cell2 = new PdfPCell(new Paragraph(personDetail.getPersonFirstName() + " " + personDetail.getPersonLastName() +
+            PdfPCell cell2 =
+                    new PdfPCell(new Paragraph(personDetail.getPersonFirstName()+"  "+ personDetail.getPersonLastName() +
                     " (" + personDetail.getPersonId() + ")", grey));
-            cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell2.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell2.setPadding(5.0f);
             cell2.setMinimumHeight(20.0f);
             table.addCell(cell2);
 
             PdfPCell cell3 =
-                    new PdfPCell(new Paragraph(personDetail.getPersonAddress(), grey));
-            cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    new PdfPCell(new Paragraph(personDetail.getPersonAddress()+ System.lineSeparator()+personDetail.getPinCode(), grey));
+            cell3.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell3.setPadding(5.0f);
             cell3.setMinimumHeight(20.0f);
             table.addCell(cell3);
 
             PdfPCell cell4 =
-                    new PdfPCell(new Paragraph("1000", grey));
+                    new PdfPCell(new Paragraph(String.valueOf(distributionAmount), grey));
             cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell4.setPadding(5.0f);
             cell4.setMinimumHeight(50.0f);

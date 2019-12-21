@@ -105,6 +105,7 @@ public class RegistrationController {
 
                 LOGGER.info("==================DATE=========" + formatter.format(date));
                 personDetail.setPersonJoinedDate(date);
+                personDetail.setRole("USER");
 
                 PersonDetail details = registrationService.savePersonDetail(personDetail);
                 LOGGER.info("==================3=========" + details.getPersonId());
@@ -112,16 +113,12 @@ public class RegistrationController {
                 ModelAndView loginModel = new ModelAndView("login");
                 loginModel.addObject("login", new Login());
                 loginModel.addObject("loginCredential", " Person ID " + personDetail.getPersonId() + " is registered." +
-                        " " +
-                        "Please " +
-                        "login to continue");
+                        " Please login to continue");
 
                 sendSms = new SendSms();
                 sendSms.sendSms("91" + details.getContactNumber(),
                         "Welcome " + details.getPersonFirstName() + " " + details.getPersonLastName() + ", " + " you are " +
-                                "registered to People " +
-                                "Welfare with " +
-                                "the id " + details.getPersonId());
+                                "registered to People Welfare with the id " + details.getPersonId());
                 return loginModel;
 
             } else {

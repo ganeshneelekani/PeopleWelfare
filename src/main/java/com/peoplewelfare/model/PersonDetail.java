@@ -54,6 +54,9 @@ public class PersonDetail {
     @Column(name = "PARENT_REFERENCE")
     private String parentReference;
 
+    @Column(name = "PERSON_ROLE")
+    private String role;
+
     @Transient
     private String verifyPassword;
 
@@ -183,5 +186,13 @@ public class PersonDetail {
 
     public void setPersonJoinedDate(Date personJoinedDate) {
         this.personJoinedDate = personJoinedDate;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

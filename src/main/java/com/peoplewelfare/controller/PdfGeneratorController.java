@@ -19,24 +19,5 @@ public class PdfGeneratorController {
     @Autowired
     MainMenuService mainMenuService;
 
-    @RequestMapping(value = "/downloadPDF/{id}", method = RequestMethod.GET)
-    public ModelAndView validateLogin(@PathVariable("id") String personId
-    ) {
 
-        PersonDetail fetchPersonDetail = mainMenuService.fetchPersonInfo(personId);
-        List<PersonDetail> personDetailDirectList = mainMenuService.fetchDirectList(personId);
-
-        for (PersonDetail personDetail : personDetailDirectList) {
-            LOGGER.info(personDetail.getPersonId());
-        }
-
-        LOGGER.info("========PDF==================" + personId);
-
-        ModelAndView modelView = new ModelAndView("pdfView");
-        modelView.addObject("personDetailList", personDetailDirectList);
-        modelView.addObject("personDetail", fetchPersonDetail);
-
-        return modelView;
-
-    }
 }

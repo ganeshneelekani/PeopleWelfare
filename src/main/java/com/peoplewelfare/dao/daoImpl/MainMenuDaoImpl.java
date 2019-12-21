@@ -22,8 +22,11 @@ public class MainMenuDaoImpl implements MainMenuDao {
     private SessionFactory sessionFactory;
 
     private List<PersonDetail> personDetailsChild;
+    private List<PersonDetail> personDetailsParent;
     private List<PersonDetail> listPersonDetails;
     private List<PersonDetail> listChildPersonDetails;
+    private List<PersonDetail> listParentPersonDetails;
+    private List<PersonDetail> listOfParent;
 
     @Override
     public List<PersonDetail> fetchMemberTreeInfo(String personId) {
@@ -68,13 +71,31 @@ public class MainMenuDaoImpl implements MainMenuDao {
     }
 
     @Override
-    public List<PersonDetail> fetchDirectList(String personId) {
+    public List<PersonDetail> fetchDirectParentList(String personId) {
 
-        Query query = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p.parentReference =:parentReference");
-        query.setParameter("parentReference", personId);
+        personDetailsParent = new ArrayList<>();
+        listOfParent = new ArrayList<>();
+        listParentPersonDetails = new ArrayList<>();
 
-        List<PersonDetail> personDetails = query.list();
-        return personDetails;
+        Query query = sessionFactory.getCurrentSession().createQuery("from PersonDetail p " +
+                "where p.personId=:personId");
+        query.setParameter("personId", personId);
+
+        PersonDetail personDetails =(PersonDetail) query.uniqueResult();
+
+        LOGGER.info("=======99====="+personDetails.getParentReference());
+
+            listOfParent = fetchRecursiveParent(personDetails.getParentReference(), 9);
+
+        for (PersonDetail personDetail : listOfParent) {
+
+            LOGGER.info("=======4.3=====" + personDetail.getPersonId());
+
+        }
+
+
+        return  listOfParent;
+
     }
 
 
@@ -110,6 +131,39 @@ public class MainMenuDaoImpl implements MainMenuDao {
 
         }
         return personDetailsChild;
+    }
+
+    private List<PersonDetail> fetchRecursiveParent(String perentReference, int n) {
+
+        if (n > 0) {
+            LOGGER.info("=======23232323====="+perentReference);
+
+            Query queryParent = sessionFactory.getCurrentSession().createQuery(" from PersonDetail p where p" +
+                    ".personId=:personId and p.personId!=:pid");
+            queryParent.setParameter("personId", perentReference);
+            queryParent.setParameter("pid", "PP10000");
+
+            listParentPersonDetails = queryParent.list();
+
+            LOGGER.info(listParentPersonDetails + " PPPPPPPPPPPPPPPPPPP");
+
+            if (listParentPersonDetails.size() > 0) {
+                personDetailsParent.addAll(listParentPersonDetails);
+            }
+
+            for (PersonDetail personDetail :
+                    listParentPersonDetails) {
+                if (n > 0) {
+                    LOGGER.info("=======2.2=====" + personDetail.getParentReference());
+                    fetchRecursiveParent(personDetail.getParentReference(), n - 1);
+                }
+
+            }
+
+            LOGGER.info("=======================5======================");
+
+        }
+        return personDetailsParent;
     }
 
 

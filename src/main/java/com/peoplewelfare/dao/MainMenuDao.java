@@ -10,6 +10,6 @@ public interface MainMenuDao {
 
     PersonDetail fetchPersonInfo(String personId);
 
-    List<PersonDetail> fetchDirectList(String personId);
+    List<PersonDetail> fetchDirectParentList(String personId);
 
 }

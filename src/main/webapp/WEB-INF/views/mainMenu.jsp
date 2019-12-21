@@ -43,7 +43,7 @@
 
 
             <div class="row col-md-6 col-md-offset-2 custyle">
-            Direct List
+            Parent Chain List
                 <table class="table table-striped custab">
                 <thead>
                     <tr>
@@ -65,13 +65,15 @@
                                <td><c:out value="${current.personFirstName}"/><td>
                                <td><c:out value="${current.personLastName}"/><td>
                                <td><c:out value="${current.personJoinedDate}"/><td>
-                            <td class="text-center"><a class='btn btn-info btn-xs'
-                            href="/PeopleWelfare/downloadPDF/${current.personId}" target="_blank"
-                            <span class="glyphicon glyphicon-edit"></span> Download Form</a></td>
+                            </td>
                             </tr>
                             </c:forEach>
                         </tr>
                 </table>
+
+                <td class="text-center"><a class='btn btn-info btn-xs'
+                                            href="/PeopleWelfare/downloadForm1" target="_blank"
+                                            <span class="glyphicon glyphicon-edit"></span> Form 1</a>
                 </div>
 
          </main>
