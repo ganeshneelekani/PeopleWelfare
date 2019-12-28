@@ -71,6 +71,20 @@ public class LoginController {
             LOGGER.info(detail.getPersonId() + " :::::::  ");
         }
 
+        StringBuffer nodes = new StringBuffer();
+        for (PersonDetail personDet : personDetailDirectList) {
+
+            LOGGER.info("=======5.3=====" + personDet.getPersonId() + "   " + personDet.getParentReference());
+
+            nodes.append(" { id: " + "\"" + personDet.getPersonId() + "\"" + ", pid: " + "\"" + personDet.getParentReference() +
+                    "\" " + ", tags: " +
+                    "[\"family_template_11\"], name: " + "\"" + personDet.getPersonFirstName() + "\"" + ", title: " +
+                    "\"" + personDet.getPersonId() + "\"" + "},").append(
+                    "\n");
+
+        }
+
+        model.addObject("nodes", nodes);
         LOGGER.info("====================4=====================1234" + validatedLogin.getPersonFirstName());
         return model;
     }
