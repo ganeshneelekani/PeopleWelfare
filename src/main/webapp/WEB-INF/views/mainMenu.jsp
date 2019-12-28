@@ -30,7 +30,7 @@
          </style>
    </head>
    <body>
-       <div id="tree"></div>
+      <div id="tree"></div>
       <div class="page-wrapper chiller-theme toggled">
          <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
          <i class="fas fa-bars"></i>
@@ -42,16 +42,16 @@
          <main class="page-content">
             </br>
             </br>
-            </br></br>
-            </br>
             </br>
             <h2> Welcome ${personDetail.personFirstName} ${personDetail.personLastName} - ${personDetail
                .personId}
             </h2>
-            </br>
-            </br>
-            </br></br>
-            </br>
+            <div class="row">
+               <div class="col-sm-2 col-md-2">
+                  <img src="http://thetransformedmale.files.wordpress.com/2011/06/bruce-wayne-armani.jpg"
+                     alt="" class="img-rounded img-responsive" width="250" height="250" />
+               </div>
+            </div>
             </br>
             <div class="col-sm-4">
             </div>
@@ -95,24 +95,25 @@
       <script type="text/JavaScript" src="bootstrap/js/OrgChart.js"></script>
       <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <script>
-window.onload = function () {
-    var chart = new OrgChart(document.getElementById("tree"), {
-        enableDragDrop: true,
-        tags: {
-            "assistant": {
-                template: "ula"
-            }
-        },
-        nodeBinding: {
-            field_0: "name",
-            field_1: "title",
-            img_0: "img"
-        },
-        nodes: [
-            ${nodes}
-        ]
-    });
-};
+         window.onload = function () {
+             var chart = new OrgChart(document.getElementById("tree"), {
+                 enableDragDrop: true,
+                 tags: {
+                     "assistant": {
+                         template: "ula"
+                     }
+                 },
+                 nodeBinding: {
+                     field_0: "name",
+                     field_1: "title",
+                     img_0: "img"
+                 },
+                 nodes: [
+                     ${nodes}
+                 ]
+             });
+         };
+
       </script>
    </body>
 </html>
