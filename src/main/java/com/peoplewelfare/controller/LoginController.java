@@ -113,7 +113,7 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/loginUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginUser")
     public ModelAndView addUserGetRequest(HttpServletRequest request, HttpServletResponse response,
                                           @ModelAttribute("login") Login user) {
         LOGGER.info("================4====================");

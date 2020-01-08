@@ -1,75 +1,41 @@
-package com.peoplewelfare.model;
+package com.peoplewelfare.form;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "PERSON_DETAILS")
-public class PersonDetail {
+public class PersonDetailVO {
 
-    @Id
-    @Column(name = "PERSON_ID")
     private String personId;
 
-    @Column(name = "PERSON_FIRSTNAME")
     private String personFirstName;
 
-    @Column(name = "PERSON_LASTNAME")
     private String personLastName;
 
-    @Column(name = "PERSON_JOINED_DATE")
-    @Temporal(TemporalType.DATE)
     private Date personJoinedDate;
 
-    @Column(name = "PERSON_GENDER")
     private String gender;
 
-    @Column(name = "PERSON_ADDRESS")
     private String personAddress;
 
-    @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
 
-    @Column(name = "STATE")
     private String state;
 
-    @Column(name = "COUNTRY")
     private String country;
 
-    @Column(name = "PINCODE")
     private String pinCode;
 
-    @Column(name = "CONTACT_NUMBER")
     private String contactNumber;
 
-    @Column(name = "NOMINEE")
     private String nominee;
 
-    @Column(name = "NOMINEE_RELATION")
     private String nomineeRelation;
 
-    @Column(name = "PERSON_PASSWORD")
     private String password;
 
-    @Column(name = "PARENT_REFERENCE")
     private String parentReference;
 
-    @Column(name = "PERSON_ROLE")
     private String role;
 
-    @Column(name = "locked", nullable = false)
-    private boolean locked = false;
-
-    @Column(name = "credentials_expired", nullable = false)
-    private boolean credentialsExpired = false;
-
-    @Column(name = "active_flg", nullable = false)
-    private boolean enabled = true;
-
-    @Column(name = "expired", nullable = false)
-    private boolean expired = false;
-
-    @Transient
     private String verifyPassword;
 
     public String getPersonId() {
@@ -206,37 +172,5 @@ public class PersonDetail {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public boolean isLocked() {
-        return locked;
-    }
-
-    public void setLocked(boolean locked) {
-        this.locked = locked;
-    }
-
-    public boolean isCredentialsExpired() {
-        return credentialsExpired;
-    }
-
-    public void setCredentialsExpired(boolean credentialsExpired) {
-        this.credentialsExpired = credentialsExpired;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public boolean isExpired() {
-        return expired;
-    }
-
-    public void setExpired(boolean expired) {
-        this.expired = expired;
     }
 }
